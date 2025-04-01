@@ -2,9 +2,12 @@
 import { useRoute } from 'vue-router';
 import { computed, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useUserStore } from '@/stores/user';
 
 const route = useRoute();
 const { locale } = useI18n();
+
+const userStore = useUserStore();
 
 // 定義要隱藏 BottomNavigator 的路由
 const hideBottomNavigatorRoutes = [ '/test','/Management/'];
@@ -21,6 +24,7 @@ watchEffect(() => {
   console.log("Normalized Route Path:", route.path.replace(/^\/(zh-TW|en-US|zh-CN|zh|en)/, ''));
   console.log("Current Locale:", locale.value);
   console.log("Should Show BottomNavigator:", shouldShowBottomNavigator.value);
+  console.log("User ID:", userStore.user_id);
 });
 </script>
 

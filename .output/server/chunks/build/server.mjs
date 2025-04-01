@@ -7295,7 +7295,7 @@ const plugins = [
   plugin_WLsn00x1qh
 ];
 const layouts = {
-  default: defineAsyncComponent(() => import('./default-CEX5x1Yk.mjs').then((m) => m.default || m))
+  default: defineAsyncComponent(() => import('./default-Dy6NDz3b.mjs').then((m) => m.default || m))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",

@@ -60,6 +60,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const route = useRoute();
     const { locale } = useI18n();
+    const userStore = useUserStore();
     const hideBottomNavigatorRoutes = ["/test", "/Management/"];
     const shouldShowBottomNavigator = computed(() => {
       const normalizedPath = route.path.replace(/^\/(zh-TW|en-US|zh-CN|zh|en)/, "");
@@ -70,6 +71,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       console.log("Normalized Route Path:", route.path.replace(/^\/(zh-TW|en-US|zh-CN|zh|en)/, ""));
       console.log("Current Locale:", locale.value);
       console.log("Should Show BottomNavigator:", shouldShowBottomNavigator.value);
+      console.log("User ID:", userStore.user_id);
     });
     return (_ctx, _push, _parent, _attrs) => {
       const _component_BottomNavigator = _sfc_main$1;
@@ -92,4 +94,4 @@ _sfc_main.setup = (props, ctx) => {
 };
 
 export { _sfc_main as default };
-//# sourceMappingURL=default-CEX5x1Yk.mjs.map
+//# sourceMappingURL=default-Dy6NDz3b.mjs.map
