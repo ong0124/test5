@@ -105,30 +105,43 @@ const selectStatus = (statusName: string, route: string) => {
   navigateTo(route); // 使用 Nuxt 的 `navigateTo` 方法進行導航
 };
 
-const router = useRouter();
-
 const loginWithLINE = async () => {
   userStore.loadUser(); // 先尝试从 localStorage 读取数据
-  
   if (!userStore.user_id) { // 如果 localStorage 没有用户信息，则执行登录
     await userStore.loginWithLINE();
-}
-    if (userStore.user_id && userStore.user_name) {
-        try {
-        const response = await $fetch('/api/LoginCustomer/createUser', {
-        method: 'POST',
-        body: { 
-            id: userStore.user_id, 
-            full_name: userStore.user_name,
-
-        }
-        });
-        if (response.success) {
-            console.log('LINE 用户信息存入数据库成功');
-        }
-        } catch (error) {
-        console.error('API 请求错误:', error);
-        }
     }
+    if (userStore.user_id && userStore.user_name) {
+      try {
+
+      const checkResponse = await $fetch(`/api/GETDetailUsers/${userStore.user_id}`);
+
+      if (checkResponse?.data) {
+        console.log('使用者已存在於資料庫');
+        return;
+      }
+    } catch (error: any) {
+      // 只有當錯誤是 404 時才繼續創建，其他錯誤拋出
+      if (error?.statusCode !== 404) {
+        console.error('查詢使用者時發生錯誤:', error);
+        return;
+      }
+    }
+
+    try {
+      const createResponse = await $fetch('/api/LoginCustomer/createUser', {
+        method: 'POST',
+        body: {
+          LineID: userStore.user_id,
+          full_name: userStore.user_name
+        }
+      });
+
+      if (createResponse.success) {
+        console.log('LINE 使用者資料已成功寫入資料庫');
+      }
+    } catch (error) {
+      console.error('建立使用者時發生錯誤:', error);
+    }
+  }
 };
 </script>

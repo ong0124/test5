@@ -23,7 +23,7 @@ export const createUser = async (evt: H3Event) => {
     const body = await readBody(evt);
 
     // 檢查必要的欄位是否存在
-    if (!body.id || !body.full_name) {
+    if (!body.LineID || !body.full_name) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Missing Line User Document'
@@ -32,11 +32,10 @@ export const createUser = async (evt: H3Event) => {
 
     // 插入資料到 users 表
     const result = await usersModel.createUser({
-      id: body.id,
       full_name: body.full_name,
       password: body.password|| null,
       created_at: new Date(), // 自動填入當前時間
-      LineID: body.LineID || null,
+      LineID: body.LineID,
       email: body.email || null,
       birthday: body.birthday || null,
       account_name: body.account_name || null

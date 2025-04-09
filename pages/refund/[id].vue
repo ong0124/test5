@@ -91,7 +91,7 @@ const refundReason = ref('');
 
 const form = reactive({
   trip_type: '',
-  user_id:'',
+  LineID:'',
   adult_num: '',
   child_num: '',
   contact_phone: '',
@@ -124,7 +124,7 @@ const fetchData = async () => {
     Object.assign(form, 
     {
       trip_type: data.trip_type,
-      user_id: data.user_id,
+      LineID: data.LineID,
       adult_num: data.adult_num,
       child_num: data.child_num,
       contact_phone: data.contact_phone,
@@ -160,7 +160,7 @@ const formatDate = (date: dayjs.Dayjs | string | null) => {
 
 const formRefund = reactive({
   booking_id: id,
-  user_id: 7,
+  LineID: form.LineID,
   get refund_type() { return refundType.value },
   get reason() { return refundReason.value }
 })

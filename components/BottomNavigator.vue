@@ -27,7 +27,7 @@ import { ref } from "vue";
 const localPath = useLocalePath();
 // 定義當前選中的導航按鈕
 const selectedPage = ref("shuttle");
-const user_id = ref();
+const LineID = ref();
 
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -50,21 +50,21 @@ const selectPage = async (pageName: string, route: string) => {
   selectedPage.value = pageName;
 
   if (pageName === "myTrip" || "reschedule"){
-    let user_id = userStore.user_id;
+    let LineID = userStore.user_id;
     
-    if(!user_id){
+    if(!LineID){
       await userStore.loginWithLINE();
     }
 
   }
   
-  if (pageName === "myTrip" && user_id) {
-    route = `/myTrip/${user_id}`;
+  if (pageName === "myTrip" && LineID) {
+    route = `/myTrip/${LineID}`;
   }
 
 
-  if (pageName === "reschedule" && user_id) {
-    route = `/reschedulePage/${user_id}`;
+  if (pageName === "reschedule" && LineID) {
+    route = `/reschedulePage/${LineID}`;
   }
 
   const selectedRoute = localPath(route);

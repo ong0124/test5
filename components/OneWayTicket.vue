@@ -379,14 +379,16 @@ import enUS from 'ant-design-vue/es/locale/en_US';
       if (!isChecked.value) {
         openNotification('bottom'); // 如果未勾選，彈出通知
       } else {
-        let user_id = userStore.user_id;
-        if(!user_id){
-          await userStore.loginWithLINE();
-        }
+         let user_id = userStore.user_id;
+        // if(!user_id){
+        //   await userStore.loginWithLINE();
+        // }
+
+        userStore.user_id = 'dsjaqqdw';
 
         const form = {
           trip_type: tab.value,
-          user_id: user_id,
+          LineID: user_id,
           adult_num: counts.value.adult,
           child_num: counts.value.child,
           contact_phone: phone.value,

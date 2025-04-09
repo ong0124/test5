@@ -23,7 +23,7 @@ export const create = async (evt: H3Event)=>{
         const body = await readBody(evt);
         const result = await bookingModel.create({
             trip_type: body.trip_type,
-            user_id: body.user_id,
+            LineID: body.LineID,
             adult_num: body.adult_num, 
             child_num: body.child_num, 
             contact_phone: body.contact_phone, 

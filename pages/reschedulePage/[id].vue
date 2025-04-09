@@ -145,12 +145,12 @@ import dayjs from "dayjs";
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const user_id = route.params.id;
+const LineID = route.params.id;
 
 const data = ref<BookingModel[]>([]);
 const fetchData = async () => {
   try {
-    const result = await $fetch(`/api/reschedulePage/${user_id}`);
+    const result = await $fetch(`/api/reschedulePage/${LineID}`);
     data.value = result.data as BookingModel[];
     console.log("最終的 data.value:", data.value);
     }catch (err) {
@@ -163,8 +163,8 @@ const formatDate = (date: string | null) => {
     return date ? dayjs(date).format("YYYY-MM-DD") : "N/A";
 };
 
-const goToDetail = (id: number) => {
-  router.push(`/reschedulePage/details/${id}`);
+const goToDetail = (LineID: number) => {
+  router.push(`/reschedulePage/details/${LineID}`);
 };
 onMounted(fetchData); 
 </script>

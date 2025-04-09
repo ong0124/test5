@@ -1,11 +1,11 @@
 import { sql } from '~/server/db/db';
 
 export type Users = {
-  id: number;
+  id?: number;
   full_name: string;
   password? : string;
   created_at: Date;
-  LineID?:number;
+  LineID?:string;
   email? :string; 
   birthday?: Date;
   account_name? :string
@@ -23,7 +23,6 @@ export const createUser = async (data: Users) => {
   const result = (await sql({
     query: `
       INSERT IGNORE INTO users (
-        id,
         full_name,
         password,
         created_at,
@@ -32,11 +31,10 @@ export const createUser = async (data: Users) => {
         birthday,
         account_name
       ) VALUES (
-       ?, ?, ?, ?, ?, ?, ?, ?
+       ?, ?, ?, ?, ?, ?, ?
       )
     `,
     values: [
-      data.id,
       data.full_name,
       data.password?? null,
       data.created_at,
@@ -53,10 +51,10 @@ export const createUser = async (data: Users) => {
 };
 
 
-export const detail = async (id: string) => {
+export const detail = async (LineID: string) => {
   const result = (await sql({
-    query: 'SELECT * FROM users WHERE id = ?',
-    values: [id]
+    query: 'SELECT * FROM users WHERE LineID = ?',
+    values: [LineID]
   })) as any;
 
   return result.length === 1 ? (result[0] as Users) : null;

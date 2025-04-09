@@ -578,7 +578,7 @@ const userStore = useUserStore();
         }
         const form = {
           trip_type: tab.value,
-          user_id: 7,
+          LineID: user_id,
           adult_num: counts.value.adult,
           child_num: counts.value.child,
           contact_phone: phone.value,

@@ -413,7 +413,7 @@ router.push('/');
 
 const form = reactive({
   trip_type: '',
-  user_id:'',
+  LineID:'',
   adult_num: '',
   child_num: '',
   contact_phone: '',
@@ -445,7 +445,7 @@ const fetchData = async () => {
     Object.assign(form, 
     {
       trip_type: data.trip_type,
-      user_id: data.user_id,
+      LineID: data.LineID,
       adult_num: data.adult_num,
       child_num: data.child_num,
       contact_phone: data.contact_phone,

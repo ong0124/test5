@@ -853,17 +853,17 @@ const _routes = [
   {
     name: "confirmationPage-id___en-US",
     path: "/en-US/confirmationPage/:id()",
-    component: () => import('./_id_-Djli2JHO.mjs')
+    component: () => import('./_id_-BjPmgRiG.mjs')
   },
   {
     name: "confirmationPage-id___zh-CN",
     path: "/zh-CN/confirmationPage/:id()",
-    component: () => import('./_id_-Djli2JHO.mjs')
+    component: () => import('./_id_-BjPmgRiG.mjs')
   },
   {
     name: "confirmationPage-id___zh-TW",
     path: "/confirmationPage/:id()",
-    component: () => import('./_id_-Djli2JHO.mjs')
+    component: () => import('./_id_-BjPmgRiG.mjs')
   },
   {
     name: "editProfile___en-US",
@@ -883,32 +883,17 @@ const _routes = [
   {
     name: "index___en-US",
     path: "/en-US",
-    component: () => import('./index-NtrDV7OC.mjs')
+    component: () => import('./index-CaKw379T.mjs')
   },
   {
     name: "index___zh-CN",
     path: "/zh-CN",
-    component: () => import('./index-NtrDV7OC.mjs')
+    component: () => import('./index-CaKw379T.mjs')
   },
   {
     name: "index___zh-TW",
     path: "/",
-    component: () => import('./index-NtrDV7OC.mjs')
-  },
-  {
-    name: "Management___en-US",
-    path: "/en-US/Management",
-    component: () => import('./index-DgQSdaEO.mjs')
-  },
-  {
-    name: "Management___zh-CN",
-    path: "/zh-CN/Management",
-    component: () => import('./index-DgQSdaEO.mjs')
-  },
-  {
-    name: "Management___zh-TW",
-    path: "/Management",
-    component: () => import('./index-DgQSdaEO.mjs')
+    component: () => import('./index-CaKw379T.mjs')
   },
   {
     name: "myTrip-id___en-US",
@@ -988,32 +973,32 @@ const _routes = [
   {
     name: "profile-profile___en-US",
     path: "/en-US/profile/profile",
-    component: () => import('./profile-Ps_8Ey7i.mjs')
+    component: () => import('./profile-dxNcnJe3.mjs')
   },
   {
     name: "profile-profile___zh-CN",
     path: "/zh-CN/profile/profile",
-    component: () => import('./profile-Ps_8Ey7i.mjs')
+    component: () => import('./profile-dxNcnJe3.mjs')
   },
   {
     name: "profile-profile___zh-TW",
     path: "/profile/profile",
-    component: () => import('./profile-Ps_8Ey7i.mjs')
+    component: () => import('./profile-dxNcnJe3.mjs')
   },
   {
     name: "refund-id___en-US",
     path: "/en-US/refund/:id()",
-    component: () => import('./_id_-DeZeuZPT.mjs')
+    component: () => import('./_id_-B-jVjDml.mjs')
   },
   {
     name: "refund-id___zh-CN",
     path: "/zh-CN/refund/:id()",
-    component: () => import('./_id_-DeZeuZPT.mjs')
+    component: () => import('./_id_-B-jVjDml.mjs')
   },
   {
     name: "refund-id___zh-TW",
     path: "/refund/:id()",
-    component: () => import('./_id_-DeZeuZPT.mjs')
+    component: () => import('./_id_-B-jVjDml.mjs')
   },
   {
     name: "refunded___en-US",
@@ -1048,17 +1033,17 @@ const _routes = [
   {
     name: "reschedulePage-details-id___en-US",
     path: "/en-US/reschedulePage/details/:id()",
-    component: () => import('./_id_-G5uPXmmF.mjs')
+    component: () => import('./_id_-BiaRQF6L.mjs')
   },
   {
     name: "reschedulePage-details-id___zh-CN",
     path: "/zh-CN/reschedulePage/details/:id()",
-    component: () => import('./_id_-G5uPXmmF.mjs')
+    component: () => import('./_id_-BiaRQF6L.mjs')
   },
   {
     name: "reschedulePage-details-id___zh-TW",
     path: "/reschedulePage/details/:id()",
-    component: () => import('./_id_-G5uPXmmF.mjs')
+    component: () => import('./_id_-BiaRQF6L.mjs')
   },
   {
     name: "test3___en-US",

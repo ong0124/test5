@@ -216,12 +216,12 @@ import dayjs from "dayjs";
 
 const { t } = useI18n();
 const route = useRoute();
-const user_id = route.params.id;
+const LineID = route.params.id;
 
 const data = ref<BookingModel[]>([]);
 const fetchData = async () => {
   try {
-    const result = await $fetch(`/api/myTrip/${user_id}`);
+    const result = await $fetch(`/api/myTrip/${LineID}`);
     data.value = result.data as BookingModel[];
     console.log("最終的 data.value:", data.value);
     }catch (err) {

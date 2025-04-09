@@ -3,7 +3,7 @@ import { sql } from "../db/db";
 export type BookingModel = {
     id: number;
     trip_type: string;
-    user_id: number;
+    LineID: string;
     adult_num: number;
     child_num: number;
     contact_phone: number;
@@ -42,7 +42,7 @@ export const create = async(data: Pick<BookingModel, Exclude<keyof BookingModel,
         query:`
       INSERT INTO booking (
       trip_type,
-      user_id,
+      LineID,
       adult_num,
       child_num,
       contact_phone,
@@ -66,7 +66,7 @@ export const create = async(data: Pick<BookingModel, Exclude<keyof BookingModel,
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `,
   values: [ data.trip_type,
-    data.user_id,
+    data.LineID,
     data.adult_num,
     data.child_num,
     data.contact_phone,
@@ -97,7 +97,7 @@ export const create = async(data: Pick<BookingModel, Exclude<keyof BookingModel,
     return insertedId ? { id: insertedId } : null;
 };
 
-export const update = async (id: string, data: Pick<BookingModel, Exclude<keyof BookingModel, 'id' | 'status'| 'user_id' |'trip_type'|'arrivalpoint_date'|'arrivalpoint_time'|'flight_num'|'return_arrival_date'|'return_arrival_time'>>) => {
+export const update = async (id: string, data: Pick<BookingModel, Exclude<keyof BookingModel, 'id' | 'status'| 'LineID' |'trip_type'|'arrivalpoint_date'|'arrivalpoint_time'|'flight_num'|'return_arrival_date'|'return_arrival_time'>>) => {
     await sql({
       query: `
         UPDATE booking
@@ -151,19 +151,19 @@ export const FindBookingDetailById = async(id: string) =>{
 };
 
 
-export const FindBookingByUserId = async(user_id: string) =>{
+export const FindBookingByUserId = async(LineID: string) =>{
     const result =(await sql({
-        query: 'SELECT * from booking WHERE user_id = ?',
-        values: [user_id]
+        query: 'SELECT * from booking WHERE LineID = ?',
+        values: [LineID]
     })) as any;
 
     return result as BookingModel[];
 };
 
-export const NotTraveledBooking = async (user_id: string) => {
+export const NotTraveledBooking = async (LineID: string) => {
     const result = (await sql({
-        query: "SELECT * FROM booking WHERE user_id = ? AND status = 'notTraveled'", // 使用雙引號包住整個 SQL 字串
-        values: [user_id] 
+        query: "SELECT * FROM booking WHERE LineID = ? AND status = 'notTraveled'", // 使用雙引號包住整個 SQL 字串
+        values: [LineID] 
     })) as any;
 
     return result as BookingModel[];

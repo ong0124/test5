@@ -30,7 +30,6 @@ const createUser$1 = async (data) => {
   const result = await sql({
     query: `
       INSERT IGNORE INTO users (
-        id,
         full_name,
         password,
         created_at,
@@ -39,11 +38,10 @@ const createUser$1 = async (data) => {
         birthday,
         account_name
       ) VALUES (
-       ?, ?, ?, ?, ?, ?, ?, ?
+       ?, ?, ?, ?, ?, ?, ?
       )
     `,
     values: [
-      data.id,
       data.full_name,
       (_a = data.password) != null ? _a : null,
       data.created_at,
@@ -56,10 +54,10 @@ const createUser$1 = async (data) => {
   console.log("Inserted result:", result);
   return result.insertId ? { ...data, id: result.insertId } : null;
 };
-const detail$1 = async (id) => {
+const detail$1 = async (LineID) => {
   const result = await sql({
-    query: "SELECT * FROM users WHERE id = ?",
-    values: [id]
+    query: "SELECT * FROM users WHERE LineID = ?",
+    values: [LineID]
   });
   return result.length === 1 ? result[0] : null;
 };
@@ -67,19 +65,18 @@ const detail$1 = async (id) => {
 const createUser = async (evt) => {
   try {
     const body = await readBody(evt);
-    if (!body.id || !body.full_name) {
+    if (!body.LineID || !body.full_name) {
       throw createError({
         statusCode: 400,
         statusMessage: "Missing Line User Document"
       });
     }
     const result = await createUser$1({
-      id: body.id,
       full_name: body.full_name,
       password: body.password || null,
       created_at: /* @__PURE__ */ new Date(),
       // 自動填入當前時間
-      LineID: body.LineID || null,
+      LineID: body.LineID,
       email: body.email || null,
       birthday: body.birthday || null,
       account_name: body.account_name || null
@@ -122,7 +119,7 @@ const create$3 = async (data) => {
     query: `
       INSERT INTO booking (
       trip_type,
-      user_id,
+      LineID,
       adult_num,
       child_num,
       contact_phone,
@@ -147,7 +144,7 @@ const create$3 = async (data) => {
   `,
     values: [
       data.trip_type,
-      data.user_id,
+      data.LineID,
       data.adult_num,
       data.child_num,
       data.contact_phone,
@@ -226,18 +223,18 @@ const FindBookingDetailById$1 = async (id) => {
   });
   return result.length === 1 ? result[0] : null;
 };
-const FindBookingByUserId$1 = async (user_id) => {
+const FindBookingByUserId$1 = async (LineID) => {
   const result = await sql({
-    query: "SELECT * from booking WHERE user_id = ?",
-    values: [user_id]
+    query: "SELECT * from booking WHERE LineID = ?",
+    values: [LineID]
   });
   return result;
 };
-const NotTraveledBooking$1 = async (user_id) => {
+const NotTraveledBooking$1 = async (LineID) => {
   const result = await sql({
-    query: "SELECT * FROM booking WHERE user_id = ? AND status = 'notTraveled'",
+    query: "SELECT * FROM booking WHERE LineID = ? AND status = 'notTraveled'",
     // 使用雙引號包住整個 SQL 字串
-    values: [user_id]
+    values: [LineID]
   });
   return result;
 };
@@ -273,7 +270,7 @@ const create$2 = async (evt) => {
     const body = await readBody(evt);
     const result = await create$3({
       trip_type: body.trip_type,
-      user_id: body.user_id,
+      LineID: body.LineID,
       adult_num: body.adult_num,
       child_num: body.child_num,
       contact_phone: body.contact_phone,
