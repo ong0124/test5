@@ -380,11 +380,9 @@ import enUS from 'ant-design-vue/es/locale/en_US';
         openNotification('bottom'); // 如果未勾選，彈出通知
       } else {
          let user_id = userStore.user_id;
-        // if(!user_id){
-        //   await userStore.loginWithLINE();
-        // }
-
-        userStore.user_id = 'dsjaqqdw';
+        if(!user_id){
+          await userStore.loginWithLINE();
+        }
 
         const form = {
           trip_type: tab.value,

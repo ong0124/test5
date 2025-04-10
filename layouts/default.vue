@@ -25,6 +25,7 @@ watchEffect(() => {
   console.log("Current Locale:", locale.value);
   console.log("Should Show BottomNavigator:", shouldShowBottomNavigator.value);
   console.log("User ID:", userStore.user_id);
+  console.log("User Full_name:", userStore.user_name);
 });
 </script>
 
