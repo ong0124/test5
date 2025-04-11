@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class=" flex p-3 items-center  ">
+                    <div class=" flex p-3 items-center" @click="userStore.logout()">
                             <div class="flex flex-1 text-sm -400 justify-center ">
                                 <img src="/assets/icons/Logout.png" alt="Logout" class="w-5 h-5 mr-2" />
                                 <p>{{ $t('profile.logout') }}</p>
