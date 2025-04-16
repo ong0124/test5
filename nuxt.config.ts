@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@pinia/nuxt',
   ],
+  plugins: ['~/plugins/dayjs'],
   i18n: {
     lazy: true,
     langDir: 'locales',
