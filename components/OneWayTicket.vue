@@ -228,6 +228,7 @@ const userStore = useUserStore();
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import zhTW from 'ant-design-vue/es/locale/zh_TW';
 import enUS from 'ant-design-vue/es/locale/en_US';
+import type { offDays_dates } from '~~/server/models/offDays';
 
     const { locale } = useI18n(); 
     const localPath = useLocalePath();
@@ -362,8 +363,22 @@ import enUS from 'ant-design-vue/es/locale/en_US';
     };
     
     const disabledDate = (current: Dayjs): boolean => {
-       return current && current.isBefore(dayjs().add(1, 'day').startOf('day'))
-    };
+      if (!isDataLoaded.value) return true;
+
+      const isBeforeToday = current && current.isBefore(dayjs().add(1, 'day').startOf('day'));
+
+      const isInOffDays = offDays.value.some(day => {
+        const start = dayjs(day.startOffDays);
+        const end = day.endOffDays ? dayjs(day.endOffDays) : start;
+
+        console.log('OffDay Range:', start.format('YYYY-MM-DD'), 'to', end.format('YYYY-MM-DD'));
+
+        return current.isSameOrAfter(start, 'day') && current.isSameOrBefore(end, 'day');
+      });
+
+      return isBeforeToday || isInOffDays;
+      }
+
     const increment = (type: 'adult' | 'child') => {
       counts.value[type]++;
     };
@@ -429,4 +444,27 @@ import enUS from 'ant-design-vue/es/locale/en_US';
       }
     };
 
+
+    const offDays = ref<any[]>([]);
+    const data = ref<offDays_dates[]>([]);
+    const isDataLoaded = ref(false);
+    const fetchData = async () => {
+    if (isDataLoaded.value) return;
+    try {
+      const result = await $fetch('/api/GETallOffdays');
+      data.value = result.data as offDays_dates[];
+      offDays.value = data.value.map(offDays => ({
+        id:offDays.id,
+        startOffDays: offDays.start_offDays,
+        endOffDays: offDays.end_offDays,
+        created_at: offDays.created_at,
+        create_by: offDays.created_by
+      }));
+      isDataLoaded.value = true;
+    } catch {
+      alert('Fetch error');
+    }
+  };
+
+onMounted(fetchData)
 </script>
