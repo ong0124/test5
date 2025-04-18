@@ -59,7 +59,7 @@
 
             <div class="text-gray-600 text-sm text-center p-4 flex justify-center">
                 <p>Powered by</p>&nbsp;
-                <p>金門通</p>
+                <p>上車巴</p>
             </div>
         </div>
     </div> 

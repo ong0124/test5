@@ -1608,17 +1608,17 @@ const _routes = [
   {
     name: "profile-profile___en-US",
     path: "/en-US/profile/profile",
-    component: () => import('./profile-D4A4dtTj.mjs')
+    component: () => import('./profile-CuIjcxx0.mjs')
   },
   {
     name: "profile-profile___zh-CN",
     path: "/zh-CN/profile/profile",
-    component: () => import('./profile-D4A4dtTj.mjs')
+    component: () => import('./profile-CuIjcxx0.mjs')
   },
   {
     name: "profile-profile___zh-TW",
     path: "/profile/profile",
-    component: () => import('./profile-D4A4dtTj.mjs')
+    component: () => import('./profile-CuIjcxx0.mjs')
   },
   {
     name: "refund-id___en-US",
@@ -2761,15 +2761,15 @@ const localeCodes = [
 ];
 const localeLoaders = {
   "en-US": [{ key: "../i18n/locales/en-US.json", load: () => import(
-    './en-US-Cl2aR_fp.mjs'
+    './en-US-CtbV1Tvi.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_en_US_json" */
   ), cache: true }],
   "zh-CN": [{ key: "../i18n/locales/zh-CN.json", load: () => import(
-    './zh-CN-DiMpj3kz.mjs'
+    './zh-CN-DzScDyan.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_CN_json" */
   ), cache: true }],
   "zh-TW": [{ key: "../i18n/locales/zh-TW.json", load: () => import(
-    './zh-TW-BQdLw3Ny.mjs'
+    './zh-TW-Bd33c9RE.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_TW_json" */
   ), cache: true }]
 };
