@@ -256,6 +256,9 @@
     "alertMessage9": "申請成功",
     "alertMessage10": "申請失敗",
     "alertMessage11": "請選擇退款類型",
+    "alertMessage12": "登錄 LINE 失敗",
+    "alertMessage13": "請先登錄 LINE",
+    "alertMessage14": "成功登出",
     "announcementMessage":"注意",
     "noMoreData":"沒有更多了"
 }

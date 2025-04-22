@@ -255,6 +255,9 @@
   "alertMessage9": "Application successful",
   "alertMessage10": "Application failed",
   "alertMessage11": "Please select a refund type",
+  "alertMessage12": "Failed to log in with LINE",
+  "alertMessage13": "Please log in with LINE first",
+  "alertMessage14": "Successfully logged out",
   "announcementMessage":"Notice",
   "noMoreData":"No more left"
 }

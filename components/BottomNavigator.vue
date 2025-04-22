@@ -23,19 +23,11 @@
 
 
 <script setup lang="ts">
+import { checkLoginStatus } from '~/utils/Useliff';
 import { ref } from "vue";
 const localPath = useLocalePath();
-// 定義當前選中的導航按鈕
 const selectedPage = ref("shuttle");
-const LineID = ref();
-
-import { useRouter } from 'vue-router';
-const router = useRouter();
-// 這裡可以是從後端獲取的 ID
-import liff from '@line/liff';
-import { LIFF_ID } from '@/utils/liff.config'; 
-import { useUserStore } from "@/stores/user";
-const userStore = useUserStore();
+const { t } = useI18n();
 
 
 // 定義導航項目
@@ -49,63 +41,31 @@ const pages = [
 const selectPage = async (pageName: string, route: string) => {
   selectedPage.value = pageName;
 
-  if (pageName === "myTrip" || "reschedule"){
-    let LineID = userStore.user_id;
-    
-    if(!LineID){
-      await userStore.loginWithLINE();
-    }
+  let user = await checkLoginStatus(); 
 
+  if (!user || !user.user_id) {
+    alert(t('alertMessage13'))
+    user = await loginWithLINE(); 
+    if (!user) {
+      console.log('登入失敗');
+    return;
   }
-  
-  if (pageName === "myTrip" && LineID) {
+}
+
+  const LineID = user.user_id;
+
+  if (pageName === "myTrip") {
     route = `/myTrip/${LineID}`;
+    console.log(`Line ID: ${LineID}`);
   }
 
-
-  if (pageName === "reschedule" && LineID) {
+  if (pageName === "reschedule") {
     route = `/reschedulePage/${LineID}`;
+    console.log(`Line ID: ${LineID}`);
   }
 
   const selectedRoute = localPath(route);
   navigateTo(selectedRoute);
 };
-
-  // 如果 user_id 为空，则尝试通过 LINE 登录获取
-  // if (!user_id) {
-  //   try {
-  //     if (import.meta.server) return;
-      
-  //     await liff.init({ liffId: LIFF_ID });
-
-  //     if (!liff.isLoggedIn()) {
-  //       //liff.login({ redirectUri: window.location.href });
-  //       return;
-  //     }
-
-  //     const profile = await liff.getProfile();
-  //     user_id = profile.userId;
-
-  //     // 更新 Pinia Store
-  //     userStore.$patch({
-  //       user_id,
-  //       user_name: profile.displayName,
-  //       user_picture: profile.pictureUrl ?? null,
-  //     });
-
-  //     // 存储到 localStorage
-  //     localStorage.setItem("user_id", user_id);
-  //     localStorage.setItem("user_name", profile.displayName);
-  //     localStorage.setItem("user_picture", profile.pictureUrl ?? "");
-  //   } catch (error) {
-  //     console.error("LINE 登录失败：", error);
-  //     router.back();
-  //     return;
-  //   }
-  // }
-  
-
-  // 如果是 'myTrip' 或 'reschedulePage'，拼接 user_id
-
 
 </script>

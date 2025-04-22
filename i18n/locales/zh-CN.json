@@ -255,6 +255,9 @@
   "alertMessage9": "申请成功",
   "alertMessage10": "申请失败",
   "alertMessage11": "请选择退款类型",
+  "alertMessage12": "登录 LINE 失败",
+  "alertMessage13": "请先登录 LINE",
+  "alertMessage14": "成功登出",
   "announcementMessage":"注意",
   "noMoreData":"没有更多了"
 }

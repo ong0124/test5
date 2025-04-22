@@ -2,7 +2,6 @@
     <div class="bg-green-900 bg-opacity-85">
     <div class="flex py-12 items-center bg-[url('/assets/images/profileTest1.png')] bg-cover">
         <div 
-        @click="loginWithLINE"
         class="flex bg-white bg-opacity-40 rounded-full items-center justify-center w-64 h-20 p-2 mx-auto">
             <div class="px-4 flex-none ">
                 <a-avatar 
@@ -14,7 +13,7 @@
                 </a-avatar>
             </div>
             <div class="flex flex-col flex-1 ">
-                <p>{{  userStore.user_name || $t('profile.nickname') }}</p>
+                <p>{{  user_name || $t('profile.nickname') }}</p>
                 <div class="flex">
                 </div>
             </div>
@@ -48,7 +47,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class=" flex p-3 items-center" @click="userStore.logout()">
+                    <div class=" flex p-3 items-center" 
+                    @click="logout()">
                             <div class="flex flex-1 text-sm -400 justify-center ">
                                 <img src="/assets/icons/Logout.png" alt="Logout" class="w-5 h-5 mr-2" />
                                 <p>{{ $t('profile.logout') }}</p>
@@ -72,17 +72,15 @@ import NotTraveledIcon from '@/assets/icons/NotTraveled2.png';
 import RefundIcon from '@/assets/icons/Refund2.png';
 import orderIcon from '@/assets/icons/orderIcon2.png';
 import PasswordIcon from '@/assets/icons/Password2.png';
-import SettingsIcon from '@/assets/icons/Settings.png';
 import ContactIcon from '@/assets/icons/Contact2.png';
 import ReviewIcon from '@/assets/icons/Review2.png';
 import passengerIcon from '@/assets/icons/passengericon.png';
-import { defineProps } from 'vue';
-
-import { useUserStore } from "@/stores/user";
-const userStore = useUserStore();
+import { logoutUser } from "@/utils/Useliff"; 
+import { loadUser } from "@/utils/Useliff"; 
 const defaultAvatar = 'https://example.com/default-avatar.jpg'; 
 const user_picture = ref<string | null>(null); 
-const localPath = useLocalePath();
+const user_name = ref<string | null>(null); 
+const { t } = useI18n();
 
 // 定義導航項目
 const BookingStatus = [
@@ -105,43 +103,20 @@ const selectStatus = (statusName: string, route: string) => {
   navigateTo(route); // 使用 Nuxt 的 `navigateTo` 方法進行導航
 };
 
-const loginWithLINE = async () => {
-  userStore.loadUser(); // 先尝试从 localStorage 读取数据
-  if (!userStore.user_id) { // 如果 localStorage 没有用户信息，则执行登录
-    await userStore.loginWithLINE();
-    }
-    if (userStore.user_id && userStore.user_name) {
-      try {
-
-      const checkResponse = await $fetch(`/api/GETDetailUsers/${userStore.user_id}`);
-
-      if (checkResponse?.data) {
-        console.log('使用者已存在於資料庫');
-        return;
-      }
-    } catch (error: any) {
-      // 只有當錯誤是 404 時才繼續創建，其他錯誤拋出
-      if (error?.statusCode !== 404) {
-        console.error('查詢使用者時發生錯誤:', error);
-        return;
-      }
-    }
-
-    try {
-      const createResponse = await $fetch('/api/LoginCustomer/createUser', {
-        method: 'POST',
-        body: {
-          LineID: userStore.user_id,
-          full_name: userStore.user_name
-        }
-      });
-
-      if (createResponse.success) {
-        console.log('LINE 使用者資料已成功寫入資料庫');
-      }
-    } catch (error) {
-      console.error('建立使用者時發生錯誤:', error);
-    }
-  }
+const logout = () => {
+  logoutUser(); 
+  alert(t('alertMessage4'));
 };
+
+onMounted(async () => {
+  const user = loadUser(); // 直接调用 utils 中的函数加载用户信息
+  if (user) {
+    // 如果用户已登录，设置头像和用户名
+    user_picture.value = user.user_picture || defaultAvatar;
+    user_name.value = user.user_name || t('profile.nickname');
+  } else {
+    // 如果没有登录，执行登录
+    await loginWithLINE();
+  }
+});
 </script>

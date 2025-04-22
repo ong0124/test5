@@ -223,8 +223,6 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/zh-tw';
 import 'dayjs/locale/en';
-import { useUserStore } from "@/stores/user";
-const userStore = useUserStore();
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import zhTW from 'ant-design-vue/es/locale/zh_TW';
 import enUS from 'ant-design-vue/es/locale/en_US';
@@ -394,14 +392,19 @@ import type { offDays_dates } from '~~/server/models/offDays';
       if (!isChecked.value) {
         openNotification('bottom'); // 如果未勾選，彈出通知
       } else {
-         let user_id = userStore.user_id;
-        if(!user_id){
-          await userStore.loginWithLINE();
-        }
+        let user = loadUser(); 
 
+        if (!user || !user.user_id) {
+          alert(t('alertMessage13'))
+          user = await loginWithLINE(); 
+          if (!user) {
+            console.log('登入失敗');
+          return;
+        }
+      }  
         const form = {
           trip_type: tab.value,
-          LineID: user_id,
+          LineID: user.user_id,
           adult_num: counts.value.adult,
           child_num: counts.value.child,
           contact_phone: phone.value,
