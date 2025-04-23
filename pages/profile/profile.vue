@@ -48,7 +48,7 @@
                 </div>
                 <div>
                     <div class=" flex p-3 items-center" 
-                    @click="logout()">
+                      @click="logout()">
                             <div class="flex flex-1 text-sm -400 justify-center ">
                                 <img src="/assets/icons/Logout.png" alt="Logout" class="w-5 h-5 mr-2" />
                                 <p>{{ $t('profile.logout') }}</p>
@@ -66,7 +66,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
 import ToPayIcon from '@/assets/icons/ToPay2.png';
 import NotTraveledIcon from '@/assets/icons/NotTraveled2.png';
 import RefundIcon from '@/assets/icons/Refund2.png';
@@ -104,8 +103,9 @@ const selectStatus = (statusName: string, route: string) => {
 };
 
 const logout = () => {
+  console.log("logout clicked");
   logoutUser(); 
-  alert(t('alertMessage4'));
+  navigateTo('/');
 };
 
 onMounted(async () => {

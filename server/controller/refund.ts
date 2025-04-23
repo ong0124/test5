@@ -21,9 +21,7 @@ export const create = async (evt: H3Event) => {
   try {
     const body = await readBody(evt);
     const params = evt.context.params; // 取得路由參數
-
-    // 轉換 user_id 和 id 為 number 類型
-    //const userId = Number(params?.user_id);
+    
     const id = params?.id;
 
     if (!id) {
@@ -35,12 +33,11 @@ export const create = async (evt: H3Event) => {
     // }
     const result = await refundModel.create({
       booking_id: Number(id),
-      user_id: body.user_id,
-      refund_type: body.refund_type,
+      LineID: body.LineID,
       reason: body.reason
     });
     return {
-      data: result,
+       success: true,
     };
   } catch (err) {
     console.error('ErrorController:', err);

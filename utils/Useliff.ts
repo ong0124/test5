@@ -54,6 +54,7 @@ export function logoutUser(): void {
   localStorage.removeItem("user_id");
   localStorage.removeItem("user_name");
   localStorage.removeItem("user_picture");
+  alert('登出成功');
 }
 
 export function loadUser(): LiffUserProfile | null {

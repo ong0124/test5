@@ -53,23 +53,17 @@
         <div class="flex py-2">
           <label class="self-center pr-2 text-gray-400">{{ $t('RefundPage.refundType') }} : </label>
           <select 
-            v-model="refundType" 
+            v-model="refundReason" 
             class="w-4/6 h-fit border rounded-lg px-3 py-2 focus:ring-lwm-100"
           >
-            <option value="RefundType1">{{ $t('RefundPage.changeOfPlans') }}</option>
-            <option value="RefundType2">{{ $t('RefundPage.tripCancellationOrAdjustment') }}</option>
-            <option value="RefundType3">{{ $t('RefundPage.bookingError') }}</option>
-            <option value="RefundType4">{{ $t('RefundPage.flightOrFerryIssue') }}</option>
-            <option value="RefundType5">{{ $t('RefundPage.systemError') }}</option>
-            <option value="RefundType6">{{ $t('RefundPage.other') }}</option>
+            <option value="refundReason1">{{ $t('RefundPage.changeOfPlans') }}</option>
+            <option value="refundReason2">{{ $t('RefundPage.tripCancellationOrAdjustment') }}</option>
+            <option value="refundReason3">{{ $t('RefundPage.bookingError') }}</option>
+            <option value="refundReason4">{{ $t('RefundPage.flightOrFerryIssue') }}</option>
+            <option value="refundReason5">{{ $t('RefundPage.systemError') }}</option>
+            <option value="refundReason6">{{ $t('RefundPage.other') }}</option>
           </select>
         </div>
-        <label class="text-gray-400">{{ $t('RefundPage.refundReason') }} :</label>
-        <textarea
-          v-model="refundReason"
-          placeholder=" "
-          class="w-full border rounded-lg px-3 py-2 h-24"
-        ></textarea>
         <div class="flex justify-end pt-4">
             <button @click="CreateRefund" class="bg-lwm-400 text-white w-2/6 py-2 rounded flex justify-center">{{ $t('RefundPage.applyRefund') }}</button>
         </div>
@@ -86,7 +80,6 @@ const router = useRouter();
 
 const id = route.params.id;
 const { t } = useI18n();
-const refundType = ref('');
 const refundReason = ref('');
 
 const form = reactive({
@@ -161,24 +154,27 @@ const formatDate = (date: dayjs.Dayjs | string | null) => {
 const formRefund = reactive({
   booking_id: id,
   LineID: form.LineID,
-  get refund_type() { return refundType.value },
   get reason() { return refundReason.value }
 })
 
-console.log("checkRefundForm" + JSON.stringify(formRefund))
 const CreateRefund = async () => {
-  if (!refundType.value) {
+  if (!refundReason.value) {
     alert(t('alertMessage11'));
     return
   }
+
   try {
-   await useFetch(`/api/PostRefund/${id}`, {
+    const result  = await useFetch(`/api/PostRefund/${id}`, {
       method: 'POST',
       body: formRefund
     });
-    console.log("check:" + JSON.stringify(formRefund))
-    alert(t('alertMessage9'))
-    router.push('/');
+    if(result.data.value?.success){
+      alert(t('alertMessage9'))
+      router.push('/');
+    }else {
+    console.log("checkRefund" + JSON.stringify(formRefund))
+    alert('alertMessage10');
+  }
   } catch (error) {
     console.error('Refund request failed:', error);
     alert('Failed to apply for a refund. Please try again.');
