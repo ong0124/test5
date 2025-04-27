@@ -11,7 +11,8 @@
     <div class="pb-12">  
       <div class="p-3 pt-4">
         <div v-for="index in notTraveled" :key="index.id" class="mb-4 transition-all duration-300 ease-in-out transform hover:scale-[1.01] active:scale-95 cursor-pointer
-             hover:shadow-md active:shadow-sm">
+             hover:shadow-md active:shadow-sm"
+             @click="handleBookingClick(index.id)">
           <div class="bg-white rounded-md shadow-sm p-2 relative flex flex-col w-full border-l-4 border-l-orange-400">
             <!-- Top Hole (Before) -->
             <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gray-100 rounded-full"></div>
@@ -106,7 +107,8 @@
     <div class="p-3 pt-4 -mt-7">
       <div v-for="index in complete" :key="index.id" class="mb-4 text-gray-600 
       transition-all duration-300 ease-in-out transform hover:scale-[1.01] active:scale-95 cursor-pointer
-      hover:shadow-md active:shadow-sm">
+      hover:shadow-md active:shadow-sm"
+      @click="handleBookingClick(index.id)">
         <div class="bg-white rounded-md shadow-sm p-2 relative flex flex-col w-full border-l-4 border-gray-300">
           <!-- Top Hole -->
           <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gray-100 rounded-full"></div>
@@ -200,9 +202,6 @@
         </div>
       </div>
     </div>
-
-
-
       <p class="flex text-gray-500 items-center  justify-center text-sm">—— {{ $t('noMoreData') }} ——</p> 
     </div>
 
@@ -216,6 +215,7 @@ import dayjs from "dayjs";
 
 const { t } = useI18n();
 const route = useRoute();
+const router = useRouter();
 const LineID = route.params.id;
 
 const data = ref<BookingModel[]>([]);
@@ -231,9 +231,13 @@ const fetchData = async () => {
 };
 const notTraveled = computed(() => data.value.filter(b => b.status === "notTraveled"));
 const complete = computed(() => data.value.filter(b => b.status === "complete"));
-
-const formatDate = (date: string | null) => {
-    return date ? dayjs(date).format("YYYY-MM-DD") : "N/A";
-};
 onMounted(fetchData); 
+
+const handleBookingClick = (bookingId: number) => {
+  console.log("Clicked booking ID:", bookingId);
+  navigateTo({
+    path: '/myTrip/orderDetail',  // 目标页面路径
+    query: { bookingId: bookingId }  // 传递 bookingId 作为查询参数
+  });
+};
 </script>

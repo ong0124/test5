@@ -26,6 +26,7 @@ export type BookingModel = {
     return_shuttle_time: string; 
     status : string;
     total_tickets?: number;
+    refund_status?:string;
 }
 
 
@@ -187,4 +188,21 @@ export const remove = async (id: string) => {
     });
 
     return result as BookingModel[];
-}
+};
+
+export const allBookingStatusByLineID = async (LineID: string) => {
+  const result = await sql({
+    query: `
+      SELECT 
+        b.*, 
+        r.*, 
+        b.status AS status,
+        r.status AS refund_status 
+      FROM booking b
+      JOIN refund_apply r ON b.id = r.booking_id
+      WHERE b.LineID = ?`,
+    values: [LineID]
+  });
+
+  return result as BookingModel[]; // 如果你有加入refund_apply的欄位，這裡也可以改成你自訂的型別
+};

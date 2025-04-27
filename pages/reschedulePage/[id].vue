@@ -140,7 +140,6 @@
 <script setup lang="ts">
 import type { BookingModel } from '~/server/models/booking';
 import { useRoute,useRouter } from 'vue-router'
-import dayjs from "dayjs";
 
 const { t } = useI18n();
 const route = useRoute();
@@ -159,12 +158,8 @@ const fetchData = async () => {
   }
 };
 
-const formatDate = (date: string | null) => {
-    return date ? dayjs(date).format("YYYY-MM-DD") : "N/A";
-};
-
-const goToDetail = (LineID: number) => {
-  router.push(`/reschedulePage/details/${LineID}`);
+const goToDetail = (bookingId: number) => {
+  router.push(`/reschedulePage/details/${bookingId}`);
 };
 onMounted(fetchData); 
 </script>

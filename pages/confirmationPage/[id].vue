@@ -113,10 +113,6 @@ import type { BookingModel } from '~/server/models/booking';
     const route = useRoute();
     const { t } = useI18n();
     const bookingId = route.params.id;
-
-    const formatDate = (date: string | null) => {
-    return date ? dayjs(date).format("YYYY-MM-DD") : "N/A";
-    };
     const isSwapped = computed(() => route.query.isSwapped === 'true')
     
     // const tab = (route.query.tab || '未提供');
@@ -179,7 +175,7 @@ import type { BookingModel } from '~/server/models/booking';
  
 const fetchData = async () => {
   try {
-    const result = await $fetch(`/api/confirmationPage/${bookingId}`);
+    const result = await $fetch(`/api/FindBookingDetailById/${bookingId}`);
     const data = result.data as BookingModel;
 
       Object.assign(form, 

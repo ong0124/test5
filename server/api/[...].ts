@@ -9,21 +9,23 @@ const router = createRouter();
 
 router.get('/GETbooking', defineEventHandler(BookingCtrl.read));
 router.post('/POSTbooking', defineEventHandler(BookingCtrl.create));
-router.get('/confirmationPage/:id', defineEventHandler(BookingCtrl.FindBookingDetailById));
+router.get('/FindBookingDetailById/:id', defineEventHandler(BookingCtrl.FindBookingDetailById));
 
 router.get('/myTrip/:id', defineEventHandler(BookingCtrl.FindBookingByUserId));
 router.get('/reschedulePage/:id', defineEventHandler(BookingCtrl.NotTraveledBooking));
 router.get('/reschedulePage/details/:id', defineEventHandler(BookingCtrl.FindBookingDetailById));
 router.put('/detailsUpdate/:id', defineEventHandler(BookingCtrl.update));
 router.delete('/DeleteBookingById/:id', defineEventHandler(BookingCtrl.remove));
+router.get('/notTraveled/:id', defineEventHandler(BookingCtrl.NotTraveledBooking));
+router.get('/allBookingStatusByLineID/:LineID', defineEventHandler(BookingCtrl.allBookingStatusByLineID));
 
-router.get('/FindBookingDetailById/:id', defineEventHandler(BookingCtrl.FindBookingDetailById));
+
+router.get('/FindBookingDetailById', defineEventHandler(BookingCtrl.FindBookingDetailById));
+
 router.post('/PostRefund/:id',defineEventHandler(RefundCtrl.create))
+router.get('/readRefundByLineID/:LineID',defineEventHandler(RefundCtrl.readRefundByLineID))
 
 router.get('/GETallOffdays',defineEventHandler(offDaysCtrl.read));
-
-//管理端的api
-router.get('/GETallOrders', defineEventHandler(BookingCtrl.checkOrders));
 
 router.get('/GETDetailUsers/:id', defineEventHandler(usersCtrl.detail));
 router.post('/LoginCustomer/createUser', defineEventHandler(usersCtrl.createUser));

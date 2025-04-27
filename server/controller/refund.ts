@@ -17,6 +17,29 @@ export const readAll = async () =>{
     }
 };
 
+export const readRefundByLineID = async (evt: H3Event) => {
+  try {
+    const LineID = getRouterParam(evt, 'LineID') as string;
+
+    if (!LineID) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Missing LineID parameter',
+      });
+    }
+    
+    const result = await refundModel.readRefundByLineID(LineID);
+    return {
+      data: result,
+    };
+  } catch (err) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Something went wrong',
+    });
+  }
+};
+
 export const create = async (evt: H3Event) => {
   try {
     const body = await readBody(evt);

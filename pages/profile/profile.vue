@@ -78,7 +78,8 @@ import { logoutUser } from "@/utils/Useliff";
 import { loadUser } from "@/utils/Useliff"; 
 const defaultAvatar = 'https://example.com/default-avatar.jpg'; 
 const user_picture = ref<string | null>(null); 
-const user_name = ref<string | null>(null); 
+const user_name = ref<string | null>(null);
+const LineID = ref(''); 
 const { t } = useI18n();
 
 // 定義導航項目
@@ -91,7 +92,7 @@ const BookingStatus = [
 
 const ProfileSettings = [
   { name: 'passenger', icon: passengerIcon, route: '/passengerPages' },
-  { name: 'changePassword', icon: PasswordIcon, route: '/profile' },
+//  { name: 'changePassword', icon: PasswordIcon, route: '/profile' },
 //   { name: 'systemSettings', icon: SettingsIcon, route: '/profile' },
   { name: 'contactSupport', icon: ContactIcon, route: '/profile' },
   { name: 'feedback', icon: ReviewIcon, route: '/profile' },
@@ -99,7 +100,11 @@ const ProfileSettings = [
 
 // 切換選中的導航按鈕
 const selectStatus = (statusName: string, route: string) => {
-  navigateTo(route); // 使用 Nuxt 的 `navigateTo` 方法進行導航
+  const query = { LineID: LineID.value };
+  navigateTo({
+    path: route,
+    query: query  // 只有在需要時傳遞 LineID
+  });
 };
 
 const logout = () => {
@@ -112,6 +117,7 @@ onMounted(async () => {
   const user = loadUser(); // 直接调用 utils 中的函数加载用户信息
   if (user) {
     // 如果用户已登录，设置头像和用户名
+    LineID.value = user.user_id || '';
     user_picture.value = user.user_picture || defaultAvatar;
     user_name.value = user.user_name || t('profile.nickname');
   } else {

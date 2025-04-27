@@ -29,6 +29,20 @@
           </div>
         </div>
 
+        <div v-if="form.trip_type === 'roundTrip'"class="border-b-2 border-dashed
+         py-2 px-4 flex flex-col items-center">
+          <div class="flex items-center space-x-3 text-lg font-medium mb-2">
+            <p>{{ return_departure }}</p>
+            <Icon name="material-symbols-arrow-right-alt" class="w-6 h-6 text-gray-500"></Icon>
+            <p>{{ return_destination }}</p>
+          </div>
+
+          <div class="flex items-center space-x-4 text-sm font-medium text-gray-600">
+            <p>{{ formatDate(form.return_shuttle_date) }}</p>
+            <p>{{ form.return_shuttle_time }}</p>
+          </div>
+        </div>
+
       
         <div class="flex mt-2">
           <p class="text-gray-400 mr-2">{{ $t('Booking.flightNumber') }} :  </p>
@@ -173,7 +187,7 @@ const CreateRefund = async () => {
       router.push('/');
     }else {
     console.log("checkRefund" + JSON.stringify(formRefund))
-    alert('alertMessage10');
+    alert(t('alertMessage10'));
   }
   } catch (error) {
     console.error('Refund request failed:', error);

@@ -187,3 +187,18 @@ export const remove = async (evt: H3Event) => {
         });
     }
 };
+
+export const allBookingStatusByLineID = async (evt: H3Event) => {
+  try {
+    const result = await bookingModel.allBookingStatusByLineID(evt.context.params?.LineID as string);
+
+    return {
+      data: result
+    };
+  } catch {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Something went wrong'
+    });
+  }
+};

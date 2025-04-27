@@ -7,7 +7,7 @@
       {{ $t('bookingStatus.all') }}
     </h1>
   </header>
-  <div>
+  <div class="pb-16">
     <nuxt-link to="/toPay">
       <div class="pl-2 pt-4">
         <div
@@ -282,4 +282,42 @@
     </div>
   </nuxt-link>
   </div>
+
+    <!-- <div v-for="item in data" :key="item.id">
+    <template v-if="item.status === 'notTraveled'">
+      <nuxt-link :to="'/notTraveled/' + item.id">
+        <div>
+
+        </div>
+      </nuxt-link>
+    </template>
+  </div> -->
 </template>
+
+
+<script setup lang="ts">
+import type { BookingModel } from '~/server/models/booking';
+const route = useRoute();
+const router = useRouter();
+
+//const LineID = route.params.id;
+const LineID = '7asfda';
+
+const data = ref<BookingModel[]>([]);
+const fetchData = async () => {
+  try {
+    const result = await $fetch(`/api/allBookingStatusByLineID/${LineID}`);
+    data.value = result.data as BookingModel[];
+    console.log("最終的 data.value:", data.value);
+    }catch (err) {
+    console.error('Error fetching booking:', err);
+    alert('Get blog detail error');
+  }
+};
+
+const goToDetail = (bookingId: number) => {
+  router.push(`/reschedulePage/details/${bookingId}`);
+};
+onMounted(fetchData); 
+
+</script>
