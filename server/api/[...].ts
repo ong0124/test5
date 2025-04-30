@@ -4,6 +4,7 @@ import * as usersCtrl from '~/server/controller/users';
 import * as BookingCtrl from '~/server/controller/booking';
 import * as RefundCtrl from '~/server/controller/refund';
 import * as offDaysCtrl from '~/server/controller/offDays'; 
+import * as PaymentCtrl from '~/server/controller/payment'; 
 
 const router = createRouter();
 
@@ -26,6 +27,9 @@ router.post('/PostRefund/:id',defineEventHandler(RefundCtrl.create))
 router.get('/readRefundByLineID/:LineID',defineEventHandler(RefundCtrl.readRefundByLineID))
 
 router.get('/GETallOffdays',defineEventHandler(offDaysCtrl.read));
+
+
+router.post('/POSTpayment', defineEventHandler(PaymentCtrl.create));
 
 router.get('/GETDetailUsers/:id', defineEventHandler(usersCtrl.detail));
 router.post('/LoginCustomer/createUser', defineEventHandler(usersCtrl.createUser));

@@ -1458,227 +1458,227 @@ const _routes = [
   {
     name: "allBookingStatus___en-US",
     path: "/en-US/allBookingStatus",
-    component: () => import('./allBookingStatus-BXHVfsVy.mjs')
+    component: () => import('./allBookingStatus-jDOaqEvi.mjs')
   },
   {
     name: "allBookingStatus___zh-CN",
     path: "/zh-CN/allBookingStatus",
-    component: () => import('./allBookingStatus-BXHVfsVy.mjs')
+    component: () => import('./allBookingStatus-jDOaqEvi.mjs')
   },
   {
     name: "allBookingStatus___zh-TW",
     path: "/allBookingStatus",
-    component: () => import('./allBookingStatus-BXHVfsVy.mjs')
+    component: () => import('./allBookingStatus-jDOaqEvi.mjs')
   },
   {
     name: "boardingpoint___en-US",
     path: "/en-US/boardingpoint",
-    component: () => import('./boardingpoint-BD6Njlt2.mjs')
+    component: () => import('./boardingpoint-CKKyHWm5.mjs')
   },
   {
     name: "boardingpoint___zh-CN",
     path: "/zh-CN/boardingpoint",
-    component: () => import('./boardingpoint-BD6Njlt2.mjs')
+    component: () => import('./boardingpoint-CKKyHWm5.mjs')
   },
   {
     name: "boardingpoint___zh-TW",
     path: "/boardingpoint",
-    component: () => import('./boardingpoint-BD6Njlt2.mjs')
+    component: () => import('./boardingpoint-CKKyHWm5.mjs')
   },
   {
     name: "confirmationPage-id___en-US",
     path: "/en-US/confirmationPage/:id()",
-    component: () => import('./_id_-DjtRwUR3.mjs')
+    component: () => import('./_id_-Cd1Ts5B-.mjs')
   },
   {
     name: "confirmationPage-id___zh-CN",
     path: "/zh-CN/confirmationPage/:id()",
-    component: () => import('./_id_-DjtRwUR3.mjs')
+    component: () => import('./_id_-Cd1Ts5B-.mjs')
   },
   {
     name: "confirmationPage-id___zh-TW",
     path: "/confirmationPage/:id()",
-    component: () => import('./_id_-DjtRwUR3.mjs')
+    component: () => import('./_id_-Cd1Ts5B-.mjs')
   },
   {
     name: "editProfile___en-US",
     path: "/en-US/editProfile",
-    component: () => import('./editProfile-b0jZ_xCS.mjs')
+    component: () => import('./editProfile-DruxteKV.mjs')
   },
   {
     name: "editProfile___zh-CN",
     path: "/zh-CN/editProfile",
-    component: () => import('./editProfile-b0jZ_xCS.mjs')
+    component: () => import('./editProfile-DruxteKV.mjs')
   },
   {
     name: "editProfile___zh-TW",
     path: "/editProfile",
-    component: () => import('./editProfile-b0jZ_xCS.mjs')
+    component: () => import('./editProfile-DruxteKV.mjs')
   },
   {
     name: "index___en-US",
     path: "/en-US",
-    component: () => import('./index-knbvyTXi.mjs')
+    component: () => import('./index-ajEb0Cmk.mjs')
   },
   {
     name: "index___zh-CN",
     path: "/zh-CN",
-    component: () => import('./index-knbvyTXi.mjs')
+    component: () => import('./index-ajEb0Cmk.mjs')
   },
   {
     name: "index___zh-TW",
     path: "/",
-    component: () => import('./index-knbvyTXi.mjs')
+    component: () => import('./index-ajEb0Cmk.mjs')
   },
   {
     name: "myTrip-id___en-US",
     path: "/en-US/myTrip/:id()",
-    component: () => import('./_id_-BzGRFLUD.mjs')
+    component: () => import('./_id_-CC9Wzfz4.mjs')
   },
   {
     name: "myTrip-id___zh-CN",
     path: "/zh-CN/myTrip/:id()",
-    component: () => import('./_id_-BzGRFLUD.mjs')
+    component: () => import('./_id_-CC9Wzfz4.mjs')
   },
   {
     name: "myTrip-id___zh-TW",
     path: "/myTrip/:id()",
-    component: () => import('./_id_-BzGRFLUD.mjs')
+    component: () => import('./_id_-CC9Wzfz4.mjs')
   },
   {
     name: "myTrip-orderDetail___en-US",
     path: "/en-US/myTrip/orderDetail",
-    component: () => import('./orderDetail-QcrAporn.mjs')
+    component: () => import('./orderDetail-CGdMCSS7.mjs')
   },
   {
     name: "myTrip-orderDetail___zh-CN",
     path: "/zh-CN/myTrip/orderDetail",
-    component: () => import('./orderDetail-QcrAporn.mjs')
+    component: () => import('./orderDetail-CGdMCSS7.mjs')
   },
   {
     name: "myTrip-orderDetail___zh-TW",
     path: "/myTrip/orderDetail",
-    component: () => import('./orderDetail-QcrAporn.mjs')
+    component: () => import('./orderDetail-CGdMCSS7.mjs')
   },
   {
     name: "notTraveled___en-US",
     path: "/en-US/notTraveled",
-    component: () => import('./notTraveled-CPESJ5Xm.mjs')
+    component: () => import('./notTraveled-x3vovSyu.mjs')
   },
   {
     name: "notTraveled___zh-CN",
     path: "/zh-CN/notTraveled",
-    component: () => import('./notTraveled-CPESJ5Xm.mjs')
+    component: () => import('./notTraveled-x3vovSyu.mjs')
   },
   {
     name: "notTraveled___zh-TW",
     path: "/notTraveled",
-    component: () => import('./notTraveled-CPESJ5Xm.mjs')
+    component: () => import('./notTraveled-x3vovSyu.mjs')
   },
   {
     name: "passengerPages___en-US",
     path: "/en-US/passengerPages",
-    component: () => import('./passengerPages-BBubYgHN.mjs')
+    component: () => import('./passengerPages-B8m5uh2f.mjs')
   },
   {
     name: "passengerPages___zh-CN",
     path: "/zh-CN/passengerPages",
-    component: () => import('./passengerPages-BBubYgHN.mjs')
+    component: () => import('./passengerPages-B8m5uh2f.mjs')
   },
   {
     name: "passengerPages___zh-TW",
     path: "/passengerPages",
-    component: () => import('./passengerPages-BBubYgHN.mjs')
+    component: () => import('./passengerPages-B8m5uh2f.mjs')
   },
   {
     name: "payment___en-US",
     path: "/en-US/payment",
-    component: () => import('./payment-B2TVhsVb.mjs')
+    component: () => import('./payment-DTJkLSqU.mjs')
   },
   {
     name: "payment___zh-CN",
     path: "/zh-CN/payment",
-    component: () => import('./payment-B2TVhsVb.mjs')
+    component: () => import('./payment-DTJkLSqU.mjs')
   },
   {
     name: "payment___zh-TW",
     path: "/payment",
-    component: () => import('./payment-B2TVhsVb.mjs')
+    component: () => import('./payment-DTJkLSqU.mjs')
   },
   {
     name: "profile-profile___en-US",
     path: "/en-US/profile/profile",
-    component: () => import('./profile-BYoxF0Ms.mjs')
+    component: () => import('./profile-DchSmZTm.mjs')
   },
   {
     name: "profile-profile___zh-CN",
     path: "/zh-CN/profile/profile",
-    component: () => import('./profile-BYoxF0Ms.mjs')
+    component: () => import('./profile-DchSmZTm.mjs')
   },
   {
     name: "profile-profile___zh-TW",
     path: "/profile/profile",
-    component: () => import('./profile-BYoxF0Ms.mjs')
+    component: () => import('./profile-DchSmZTm.mjs')
   },
   {
     name: "refund-id___en-US",
     path: "/en-US/refund/:id()",
-    component: () => import('./_id_-QPN44MxO.mjs')
+    component: () => import('./_id_-Cdmkg7uk.mjs')
   },
   {
     name: "refund-id___zh-CN",
     path: "/zh-CN/refund/:id()",
-    component: () => import('./_id_-QPN44MxO.mjs')
+    component: () => import('./_id_-Cdmkg7uk.mjs')
   },
   {
     name: "refund-id___zh-TW",
     path: "/refund/:id()",
-    component: () => import('./_id_-QPN44MxO.mjs')
+    component: () => import('./_id_-Cdmkg7uk.mjs')
   },
   {
     name: "refunded___en-US",
     path: "/en-US/refunded",
-    component: () => import('./refunded-D7acmyU7.mjs')
+    component: () => import('./refunded-Dz2hMEzP.mjs')
   },
   {
     name: "refunded___zh-CN",
     path: "/zh-CN/refunded",
-    component: () => import('./refunded-D7acmyU7.mjs')
+    component: () => import('./refunded-Dz2hMEzP.mjs')
   },
   {
     name: "refunded___zh-TW",
     path: "/refunded",
-    component: () => import('./refunded-D7acmyU7.mjs')
+    component: () => import('./refunded-Dz2hMEzP.mjs')
   },
   {
     name: "reschedulePage-id___en-US",
     path: "/en-US/reschedulePage/:id()",
-    component: () => import('./_id_-7ZWpJI1M.mjs')
+    component: () => import('./_id_-DGFLEtnp.mjs')
   },
   {
     name: "reschedulePage-id___zh-CN",
     path: "/zh-CN/reschedulePage/:id()",
-    component: () => import('./_id_-7ZWpJI1M.mjs')
+    component: () => import('./_id_-DGFLEtnp.mjs')
   },
   {
     name: "reschedulePage-id___zh-TW",
     path: "/reschedulePage/:id()",
-    component: () => import('./_id_-7ZWpJI1M.mjs')
+    component: () => import('./_id_-DGFLEtnp.mjs')
   },
   {
     name: "reschedulePage-details-id___en-US",
     path: "/en-US/reschedulePage/details/:id()",
-    component: () => import('./_id_-BcgcYn9_.mjs')
+    component: () => import('./_id_-XQdejobs.mjs')
   },
   {
     name: "reschedulePage-details-id___zh-CN",
     path: "/zh-CN/reschedulePage/details/:id()",
-    component: () => import('./_id_-BcgcYn9_.mjs')
+    component: () => import('./_id_-XQdejobs.mjs')
   },
   {
     name: "reschedulePage-details-id___zh-TW",
     path: "/reschedulePage/details/:id()",
-    component: () => import('./_id_-BcgcYn9_.mjs')
+    component: () => import('./_id_-XQdejobs.mjs')
   },
   {
     name: "test___en-US",
@@ -1694,6 +1694,21 @@ const _routes = [
     name: "test___zh-TW",
     path: "/test",
     component: () => import('./test-N3kcO6f_.mjs')
+  },
+  {
+    name: "test2___en-US",
+    path: "/en-US/test2",
+    component: () => import('./test2-BcXMxO8g.mjs')
+  },
+  {
+    name: "test2___zh-CN",
+    path: "/zh-CN/test2",
+    component: () => import('./test2-BcXMxO8g.mjs')
+  },
+  {
+    name: "test2___zh-TW",
+    path: "/test2",
+    component: () => import('./test2-BcXMxO8g.mjs')
   },
   {
     name: "test3___en-US",
@@ -1713,17 +1728,17 @@ const _routes = [
   {
     name: "toPay___en-US",
     path: "/en-US/toPay",
-    component: () => import('./toPay-CToH0VIM.mjs')
+    component: () => import('./toPay-C579EVIo.mjs')
   },
   {
     name: "toPay___zh-CN",
     path: "/zh-CN/toPay",
-    component: () => import('./toPay-CToH0VIM.mjs')
+    component: () => import('./toPay-C579EVIo.mjs')
   },
   {
     name: "toPay___zh-TW",
     path: "/toPay",
-    component: () => import('./toPay-CToH0VIM.mjs')
+    component: () => import('./toPay-C579EVIo.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -2761,15 +2776,15 @@ const localeCodes = [
 ];
 const localeLoaders = {
   "en-US": [{ key: "../i18n/locales/en-US.json", load: () => import(
-    './en-US-D3Sj0iix.mjs'
+    './en-US-CdMV3-6d.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_en_US_json" */
   ), cache: true }],
   "zh-CN": [{ key: "../i18n/locales/zh-CN.json", load: () => import(
-    './zh-CN-BQQIQL5Y.mjs'
+    './zh-CN-D3JhzsZK.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_CN_json" */
   ), cache: true }],
   "zh-TW": [{ key: "../i18n/locales/zh-TW.json", load: () => import(
-    './zh-TW-Befq08ac.mjs'
+    './zh-TW-DT6r3xzj.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_TW_json" */
   ), cache: true }]
 };
@@ -7940,7 +7955,7 @@ const plugins = [
   dayjs_pGiXRjcsJO
 ];
 const layouts = {
-  default: defineAsyncComponent(() => import('./default-DwO7HFbf.mjs').then((m) => m.default || m))
+  default: defineAsyncComponent(() => import('./default-Dl7sEY4h.mjs').then((m) => m.default || m))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -8448,9 +8463,9 @@ const server = /*#__PURE__*/Object.freeze({
   __proto__: null,
   _: __nuxt_component_2$1,
   a: useRouter,
-  b: _export_sfc,
-  c: useLocalePath,
-  d: useI18n,
+  b: useLocalePath,
+  c: useI18n,
+  d: _export_sfc,
   default: entry$1,
   e: useNuxtApp,
   f: asyncDataDefaults,
@@ -8463,5 +8478,5 @@ const server = /*#__PURE__*/Object.freeze({
   u: useRoute
 });
 
-export { D, FORMAT_DEFAULT as F, MS as M, Q, W, Y, __nuxt_component_2$1 as _, useRouter as a, _export_sfc as b, useLocalePath as c, useI18n as d, dayjs as e, useNuxtApp as f, useAppConfig as g, useRuntimeConfig as h, injectHead as i, asyncDataDefaults as j, createError as k, M as l, navigateTo as n, resolveUnrefHeadInput as r, server as s, useRoute as u };
+export { D, FORMAT_DEFAULT as F, MS as M, Q, W, Y, __nuxt_component_2$1 as _, useRouter as a, useLocalePath as b, useI18n as c, _export_sfc as d, dayjs as e, useNuxtApp as f, useAppConfig as g, useRuntimeConfig as h, injectHead as i, asyncDataDefaults as j, createError as k, M as l, navigateTo as n, resolveUnrefHeadInput as r, server as s, useRoute as u };
 //# sourceMappingURL=server.mjs.map

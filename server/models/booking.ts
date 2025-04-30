@@ -26,7 +26,9 @@ export type BookingModel = {
     return_shuttle_time: string; 
     status : string;
     total_tickets?: number;
+    refund_id ?:number;
     refund_status?:string;
+    refund_amount?:number;
 }
 
 
@@ -196,11 +198,14 @@ export const allBookingStatusByLineID = async (LineID: string) => {
       SELECT 
         b.*, 
         r.*, 
+        b.id AS id,
         b.status AS status,
-        r.status AS refund_status 
+        r.status AS refund_status,
+        r.id AS refund_id 
       FROM booking b
-      JOIN refund_apply r ON b.id = r.booking_id
-      WHERE b.LineID = ?`,
+      JOIN refund_apply r ON r.booking_id = b.id 
+      WHERE b.LineID = ?
+      ORDER BY b.status ASC`,
     values: [LineID]
   });
 

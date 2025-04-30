@@ -93,7 +93,8 @@
     "total":"合計",
     "OrderAmount":"訂單金額",
     "redEnvelope":"紅包",
-    "OrderTotal":"訂單總價"
+    "OrderTotal":"訂單總價",
+    "Cash":"現金"
   },
   "confirmationPage":{
     "title": "訂單確認",

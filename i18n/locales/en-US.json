@@ -92,7 +92,8 @@
     "total": "Total",
     "OrderAmount":"Order amount",
     "redEnvelope":"Red Envelope",
-    "OrderTotal":"Order Total"
+    "OrderTotal":"Order Total",
+    "Cash":"Cash"
   },
 
   "confirmationPage":{

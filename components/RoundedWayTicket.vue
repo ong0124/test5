@@ -614,7 +614,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
           ferry_time: ferryTime.value || undefined,
           flight_time: flightTime.value || undefined,
           shuttle_date: DateShuttle.value? DateShuttle.value.format("YYYY-MM-DD") : undefined,
-          shuttle_time: TimeArrivalShip.value,
+          shuttle_time: TimeShuttle.value,
           return_shuttle_date: DateShuttleReturn.value?DateShuttleReturn.value.format("YYYY-MM-DD") : undefined, 
           return_shuttle_time: TimeShuttleReturn.value, 
         }; 

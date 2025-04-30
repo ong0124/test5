@@ -114,7 +114,7 @@ const read$3 = async () => {
   });
   return result;
 };
-const create$3 = async (data) => {
+const create$5 = async (data) => {
   const result = await sql({
     query: `
       INSERT INTO booking (
@@ -251,11 +251,14 @@ const allBookingStatusByLineID$1 = async (LineID) => {
       SELECT 
         b.*, 
         r.*, 
+        b.id AS id,
         b.status AS status,
-        r.status AS refund_status 
+        r.status AS refund_status,
+        r.id AS refund_id 
       FROM booking b
-      JOIN refund_apply r ON b.id = r.booking_id
-      WHERE b.LineID = ?`,
+      JOIN refund_apply r ON r.booking_id = b.id 
+      WHERE b.LineID = ?
+      ORDER BY b.status ASC`,
     values: [LineID]
   });
   return result;
@@ -274,10 +277,10 @@ const read$2 = async () => {
     });
   }
 };
-const create$2 = async (evt) => {
+const create$4 = async (evt) => {
   try {
     const body = await readBody(evt);
-    const result = await create$3({
+    const result = await create$5({
       trip_type: body.trip_type,
       LineID: body.LineID,
       adult_num: body.adult_num,
@@ -450,7 +453,7 @@ const readRefundByLineID$1 = async (LineID) => {
   console.log(result);
   return result;
 };
-const create$1 = async (data) => {
+const create$3 = async (data) => {
   const result = await sql({
     query: `
       INSERT INTO refund_apply (
@@ -489,7 +492,7 @@ const readRefundByLineID = async (evt) => {
     });
   }
 };
-const create = async (evt) => {
+const create$2 = async (evt) => {
   try {
     const body = await readBody(evt);
     const params = evt.context.params;
@@ -497,7 +500,7 @@ const create = async (evt) => {
     if (!id) {
       throw createError({ statusCode: 400, statusMessage: "Invalid booking_id" });
     }
-    const result = await create$1({
+    const result = await create$3({
       booking_id: Number(id),
       LineID: body.LineID,
       reason: body.reason
@@ -535,9 +538,62 @@ const read = async () => {
   }
 };
 
+const create$1 = async (data) => {
+  const result = await sql({
+    query: `
+      INSERT IGNORE INTO payment (
+      booking_id,
+      payment_amount,
+      payment_method,
+      payment_status,
+      payment_time,
+      LineID
+      ) VALUES(?, ?, ?, ?, ?, ?)`,
+    values: [
+      data.booking_id,
+      data.payment_amount,
+      data.payment_method,
+      data.payment_status,
+      data.payment_time,
+      data.LineID
+    ]
+  });
+  console.log("Inserted result:", result);
+};
+
+const nowTime = (/* @__PURE__ */ new Date()).toTimeString().split(" ")[0];
+const create = async (evt) => {
+  try {
+    const body = await readBody(evt);
+    if (!body.booking_id || !body.payment_method || !body.LineID) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: "booking_id\u3001payment_method \u548C LineID \u4E0D\u80FD\u4E3A\u7A7A"
+      });
+    }
+    const result = await create$1({
+      booking_id: body.booking_id,
+      payment_amount: body.payment_amount,
+      payment_method: body.payment_method,
+      payment_status: body.payment_status,
+      payment_time: nowTime,
+      LineID: body.LineID
+    });
+    return {
+      data: result
+    };
+  } catch (err) {
+    console.error("ErrorController:", err);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Something went wrong"
+    });
+  }
+};
+
 const router = createRouter();
 router.get("/GETbooking", defineEventHandler(read$2));
-router.post("/POSTbooking", defineEventHandler(create$2));
+router.post("/POSTbooking", defineEventHandler(create$4));
 router.get("/FindBookingDetailById/:id", defineEventHandler(FindBookingDetailById));
 router.get("/myTrip/:id", defineEventHandler(FindBookingByUserId));
 router.get("/reschedulePage/:id", defineEventHandler(NotTraveledBooking));
@@ -547,9 +603,10 @@ router.delete("/DeleteBookingById/:id", defineEventHandler(remove));
 router.get("/notTraveled/:id", defineEventHandler(NotTraveledBooking));
 router.get("/allBookingStatusByLineID/:LineID", defineEventHandler(allBookingStatusByLineID));
 router.get("/FindBookingDetailById", defineEventHandler(FindBookingDetailById));
-router.post("/PostRefund/:id", defineEventHandler(create));
+router.post("/PostRefund/:id", defineEventHandler(create$2));
 router.get("/readRefundByLineID/:LineID", defineEventHandler(readRefundByLineID));
 router.get("/GETallOffdays", defineEventHandler(read));
+router.post("/POSTpayment", defineEventHandler(create));
 router.get("/GETDetailUsers/:id", defineEventHandler(detail));
 router.post("/LoginCustomer/createUser", defineEventHandler(createUser));
 const _____ = useBase("/api", router.handler);

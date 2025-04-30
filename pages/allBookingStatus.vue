@@ -8,6 +8,128 @@
     </h1>
   </header>
   <div class="pb-16">
+    <div v-for="item in data" :key="item.id">
+      <template v-if="item.status === 'notTraveled'">
+        <StatusCard
+        :link="{ path: 'myTrip/orderDetail', query: { bookingId: item.id } }"
+        beforeBarClass="before:bg-lwm-400"
+        :title="item.trip_type === 'oneWay' ? 'HomePage.oneWay' : (item.trip_type === 'roundTrip' ? 'HomePage.roundTrip' : 'HomePage.unknownTrip')"
+        titleBorderClass="border-l-lwm-400"
+        TextColor="text-red-500"
+        :from="item.departure_loc"
+        :to="item.destination_loc"
+        :icon="item.trip_type === 'oneWay' ? 'material-symbols-arrow-right-alt' : 'pepicons-pop:repeat'"
+        status="bookingStatus.toPay"
+        :arrivalDate="item.arrivalpoint_date"
+        :arrivalTime="item.arrivalpoint_time"
+        :shuttleDate="item.shuttle_date"
+        :shuttleTime="item.shuttle_time"
+        :adult="item.adult_num"
+        :child="item.child_num"
+      >
+        <template #footer>
+          <!-- <div>
+            <p>合計：NT$
+              <span class="text-xl text-red-500">150.00</span>
+            </p>
+          </div> -->
+          <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
+            查看详情
+          </button>
+        </template>
+      </StatusCard>
+      </template>
+      <template v-if="item.status === 'complete'">
+        <StatusCard
+        :link="{ path: 'myTrip/orderDetail', query: { bookingId: item.id } }"
+        beforeBarClass="before:bg-gray-300"
+        :title="item.trip_type === 'oneWay' ? 'HomePage.oneWay' : (item.trip_type === 'roundTrip' ? 'HomePage.roundTrip' : 'HomePage.unknownTrip')"
+        titleBorderClass="border-l-gray-300"
+        TextColor="text-gray-300"
+        :from="item.departure_loc"
+        :to="item.destination_loc"
+        :icon="item.trip_type === 'oneWay' ? 'material-symbols-arrow-right-alt' : 'pepicons-pop:repeat'"
+        status="bookingStatus.complete"
+        :arrivalDate="item.arrivalpoint_date"
+        :arrivalTime="item.arrivalpoint_time"
+        :shuttleDate="item.shuttle_date"
+        :shuttleTime="item.shuttle_time"
+        :adult="item.adult_num"
+        :child="item.child_num"
+      >
+        <template #footer>
+          <!-- <div>
+            <p>合計：NT$
+              <span class="text-xl text-red-500">150.00</span>
+            </p>
+          </div> -->
+          <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
+            查看详情
+          </button>
+        </template>
+      </StatusCard>
+      </template>
+      <template v-if="item.refund_status === 'approved'">
+        <StatusCard
+        :link="{ path: 'myTrip/orderDetail', query: { bookingId: item.id } }"
+        beforeBarClass="before:bg-gray-500"
+        :title="item.trip_type === 'oneWay' ? 'HomePage.oneWay' : (item.trip_type === 'roundTrip' ? 'HomePage.roundTrip' : 'HomePage.unknownTrip')"
+        titleBorderClass="border-l-gray-500"
+        TextColor="text-lwm-400"
+        :from="item.departure_loc"
+        :to="item.destination_loc"
+        :icon="item.trip_type === 'oneWay' ? 'material-symbols-arrow-right-alt' : 'pepicons-pop:repeat'"
+        status="bookingStatus.refundedtoUser"
+        :arrivalDate="item.arrivalpoint_date"
+        :arrivalTime="item.arrivalpoint_time"
+        :shuttleDate="item.shuttle_date"
+        :shuttleTime="item.shuttle_time"
+        :adult="item.adult_num"
+        :child="item.child_num"
+      >
+        <template #footer>
+          <div>
+            <p>退款：NT$
+              <span class="text-xl text-red-500">{{ item.refund_amount}}</span>
+            </p>
+          </div>
+          <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
+            查看详情
+          </button>
+        </template>
+      </StatusCard>
+      </template>
+      <template v-if="item.refund_status === 'pending'">
+        <StatusCard
+        :link="{ path: 'myTrip/orderDetail', query: { bookingId: item.id } }"
+        beforeBarClass="before:bg-gray-500"
+        :title="item.trip_type === 'oneWay' ? 'HomePage.oneWay' : (item.trip_type === 'roundTrip' ? 'HomePage.roundTrip' : 'HomePage.unknownTrip')"
+        titleBorderClass="border-l-gray-500"
+        TextColor="text-lwm-400"
+        :from="item.departure_loc"
+        :to="item.destination_loc"
+        :icon="item.trip_type === 'oneWay' ? 'material-symbols-arrow-right-alt' : 'pepicons-pop:repeat'"
+        status="bookingStatus.refundedApproving"
+        :arrivalDate="item.arrivalpoint_date"
+        :arrivalTime="item.arrivalpoint_time"
+        :shuttleDate="item.shuttle_date"
+        :shuttleTime="item.shuttle_time"
+        :adult="item.adult_num"
+        :child="item.child_num"
+      >
+        <template #footer>
+          <div>
+            <p>退款：NT$
+              <span class="text-xl text-red-500">{{ item.refund_amount}}</span>
+            </p>
+          </div>
+          <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
+            查看详情
+          </button>
+        </template>
+      </StatusCard>
+      </template>
+    </div>
     <nuxt-link to="/toPay">
       <div class="pl-2 pt-4">
         <div
@@ -66,232 +188,8 @@
 
 
     </nuxt-link>
-
-    <nuxt-link to="/notTraveled">
-      <div class="pl-2">
-        <div
-          v-for="index in 1"
-          :key="index"
-          class="bg-white p-3 rounded-lg flex flex-col mb-4 
-            relative before:absolute before:top-0 before:left-0 before:w-2 before:h-full 
-            before:bg-lwm-400 before:rounded-l-lg"
-        >
-          <div class="flex justify-between items-center pb-1 border-b-2 border-gray-300 mb-2">
-            <p class="text-gray-700 border-l-4 border-l-lwm-400 pl-1 ml-2 font-semibold">{{ $t('HomePage.roundTrip') }}</p>
-            <div class="flex items-center">
-              <p>{{ $t('bookingStatus.airport') }}</p>
-              <Icon name="pepicons-pop:repeat" class="mx-2 w-5 h-5"></Icon>
-              <p>{{ $t('bookingStatus.pier') }}</p>
-            </div>
-
-            <p class="text-red-500 font-semibold">
-              {{ $t('bookingStatus.notTraveled') }}
-            </p>
-          </div>
-
-          <div class="flex justify-between " >
-            <div class="flex flex-col text-sm space-y-1 px-2 border-r border-gray-300 flex-1">
-              <div class="flex items-center text-sm">
-                <div class="">
-                      <p class="w-18 ">{{ $t('Booking.arrivalAtAirportTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-                </div>
-              </div>
-              <div class="flex items-center text-sm">
-                <div class="">
-                      <p class="w-18 ">{{ $t('Booking.shuttleBusTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-                </div>
-              </div>
-              <div class="flex text-sm">
-                <p>{{ $t('Booking.adultTicket') }}</p>
-                <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">2</p>
-                <p>{{ $t('Booking.childTicket1') }}</p>
-                <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">1</p>
-              </div>
-            </div>
-            <div class="flex flex-col justify-end items-end pl-4 flex-1 text-sm">
-              <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1">
-                查看详情
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nuxt-link>
-
-    <nuxt-link to="/refundApply">
-      <div class="pl-2">
-      <div
-        v-for="index in 1"
-        :key="index"
-        class="bg-white p-3 rounded-lg flex flex-col mb-4 
-          relative before:absolute before:top-0 before:left-0 before:w-2 before:h-full 
-          before:bg-gray-500 before:rounded-l-lg"
-      >
-        <div class="flex justify-between items-center pb-1 border-b-2 border-gray-300 mb-2">
-          <p class="text-gray-700 border-l-4 border-l-gray-500 pl-1 ml-2 font-semibold">{{ $t('HomePage.oneWay') }}</p>
-          <div class="flex items-center">
-            <p>{{ $t('bookingStatus.pier') }}</p>
-            <Icon name="material-symbols-arrow-right-alt" class="mx-2 w-5 h-5"></Icon>
-            <p>{{ $t('bookingStatus.airport') }}</p>
-          </div>
-          <p class="text-orange-400 font-semibold">
-            {{ $t('bookingStatus.refundedApproving') }}
-          </p>
-        </div>
-
-        <div class="flex justify-between">
-          <div class="flex flex-col text-sm space-y-1  text-gray-400 px-2 border-r border-gray-300 flex-1">
-            <div class="flex items-center text-sm">
-              <div class="">
-                      <p class="w-18 ">{{ $t('Booking.arrivalPortTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-              </div>
-            </div>
-            <div class="flex items-center text-sm">
-              <div class="">
-                      <p class="w-18 ">{{ $t('Booking.shuttleBusTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-              </div>
-            </div>
-            <div class="flex text-sm">
-              <p>{{ $t('Booking.adultTicket') }}</p>
-              <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">2</p>
-              <p>{{ $t('Booking.childTicket1') }}</p>
-              <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">1</p>
-            </div>
-          </div>
-
-          <div class="flex flex-col justify-end items-end pl-4 flex-1 text-md">
-            <div class="flex items-center">
-              <p class="mr-1">退款：NT$</p>
-              <p class=" text-lwm-50 text-xl">300.00</p>
-            </div>
-            <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
-              查看详情
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
-        v-for="index in 1"
-        :key="index"
-        class="bg-white p-3 rounded-lg flex flex-col mb-4 
-          relative before:absolute before:top-0 before:left-0 before:w-2 before:h-full 
-          before:bg-gray-500 before:rounded-l-lg"
-      >
-        <div class="flex justify-between items-center pb-1 border-b-2 border-gray-300 mb-2">
-          <p class="text-gray-700 border-l-4 border-l-gray-500 pl-1 ml-2 font-semibold">{{ $t('HomePage.roundTrip') }}</p>
-          <div class="flex items-center">
-            <p>{{ $t('bookingStatus.pier') }}</p>
-            <Icon name="pepicons-pop:repeat" class="mx-2 w-5 h-5"></Icon>
-            <p>{{ $t('bookingStatus.airport') }}</p>
-          </div>
-          <p class="text-lwm-400 font-semibold">
-            {{ $t('bookingStatus.refundedtoUser') }}
-          </p>
-        </div>
-
-        <div class="flex justify-between">
-          <div class="flex flex-col text-sm space-y-1  text-gray-400 px-2 border-r border-gray-300 flex-1">
-            <div class="flex items-center text-sm">
-                <div class="">
-                      <p class="w-18 ">{{ $t('Booking.arrivalAtAirportTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-                </div>
-              </div>
-              <div class="flex items-center text-sm">
-                <div class="">
-                      <p class="w-18 ">{{ $t('Booking.shuttleBusTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-                </div>
-              </div>
-              <div class="flex text-sm">
-              <p>{{ $t('Booking.adultTicket') }}</p>
-              <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">2</p>
-              <p>{{ $t('Booking.childTicket1') }}</p>
-              <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">1</p>
-            </div>
-          </div>
-
-          <div class="flex flex-col justify-end items-end pl-4 flex-1 text-md">
-            <div class="flex items-center">
-              <p class="mr-1">退款：NT$</p>
-              <p class=" text-lwm-400 text-xl">300.00</p>
-            </div>
-            <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
-              查看详情
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nuxt-link>
-  <nuxt-link to="/orderDetail">
-    <div class="pl-2">
-    <div
-        v-for="index in 1"
-        :key="index"
-        class="bg-white p-3 rounded-lg flex flex-col mb-4 
-          relative before:absolute before:top-0 before:left-0 before:w-2 before:h-full 
-          before:bg-gray-300 before:rounded-l-lg"
-      >
-        <div class="flex justify-between items-center pb-1 border-b-2 border-gray-300 mb-2 text-gray-400">
-          <p class="text-gray-300 border-l-4 border-l-gray-300 pl-1 ml-2 font-semibold">{{ $t('HomePage.roundTrip') }}</p>
-          <div class="flex items-center">
-            <p>{{ $t('bookingStatus.pier') }}</p>
-            <Icon name="pepicons-pop:repeat" class="mx-2 w-5 h-5"></Icon>
-            <p>{{ $t('bookingStatus.airport') }}</p>
-          </div>
-          <p class="text-gray-400 font-semibold">
-            {{ $t('bookingStatus.complete') }}
-          </p>
-        </div>
-
-        <div class="flex justify-between">
-          <div class="flex flex-col text-sm space-y-1  text-gray-400 px-2 border-r border-gray-300 flex-1">
-            <div class="flex items-center text-sm">
-                <div class="">
-                      <p class="w-18 ">{{ $t('Booking.arrivalPortTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-                </div>
-              </div>
-              <div class="flex items-center text-sm">
-                <div class="">
-                      <p class="w-18 ">{{ $t('Booking.shuttleBusTime') }} : </p>
-                      <p class="">2025-01-01 15:30</p>
-                </div>
-              </div>
-              <div class="flex text-sm">
-              <p>{{ $t('Booking.adultTicket') }}</p>
-              <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">2</p>
-              <p>{{ $t('Booking.childTicket1') }}</p>
-              <p class="border border-gray-500 bg-gray-200 px-4 mx-1 my-auto">1</p>
-            </div>
-          </div>
-
-          <div class="flex flex-col justify-end items-end pl-4 flex-1 text-md">
-            <button class="border border-gray-300 text-gray-500 rounded-full px-4 mt-1 text-sm">
-              查看详情
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nuxt-link>
   </div>
 
-    <!-- <div v-for="item in data" :key="item.id">
-    <template v-if="item.status === 'notTraveled'">
-      <nuxt-link :to="'/notTraveled/' + item.id">
-        <div>
-
-        </div>
-      </nuxt-link>
-    </template>
-  </div> -->
 </template>
 
 

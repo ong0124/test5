@@ -89,7 +89,10 @@
             </div>
             <!-- Right Side: Submit Order Button -->
             <NuxtLink 
-            :to="localPath('/payment')" 
+            :to="{
+                path: localPath('/payment'),
+                query: { bookingId: bookingId, LineID: form.LineID }
+            }" 
             class="bg-green-500 text-white rounded-lg px-6 py-1 hover:bg-green-600 transition"
             >
             {{ $t('confirmationPage.submitOrder') }}
@@ -107,7 +110,6 @@
 import { defineComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import dayjs from "dayjs";
 import type { BookingModel } from '~/server/models/booking';
     const localPath = useLocalePath();
     const route = useRoute();

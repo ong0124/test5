@@ -45,8 +45,8 @@
                 <div class="flex items-center px-2 rounded-md mt-2 space-x-2">
                   <Icon name="i-majesticons-ship-line" class="w-5 h-5 text-lwm-50"></Icon>
                   <p class="w-32 truncate">{{ $t('Booking.arrivalPortTime') }}</p>
-                  <p class="text-gray-800">2025-03-10</p>
-                  <p class="pl-2 font-semibold text-gray-900">09:30:00</p>
+                  <p class="text-gray-800">{{ formatDate(index.arrivalpoint_date)}}</p>
+                  <p class="pl-2 font-semibold text-gray-900">{{ index.arrivalpoint_time }}</p>
                 </div>
               </div>
               <!-- Shuttle Bus Time -->
@@ -63,12 +63,12 @@
             <!-- Return Trip (if roundTrip) -->
             <div v-if="index.trip_type === 'roundTrip'" class="text-md text-gray-700">
               <!-- Return Arrival Time -->
-              <div class="text-gray-500">
-                <div class="flex items-center px-2 rounded-md mt-2 space-x-2">
+              <div class="text-gray-500 flex">
+                <div class="flex items-center px-2 mt-2 space-x-2">
                   <Icon name="i-material-symbols-flight-land" class="w-5 h-5 text-lwm-50"></Icon>
                   <p class="w-32 truncate">{{ $t('Booking.arrivalAtAirportTime') }}</p>
-                  <p class="text-gray-800">2025-03-15</p>
-                  <p class="pl-2 font-semibold text-gray-900">17:30:00</p>
+                  <p class="text-gray-800">{{ formatDate(index.arrivalpoint_date)}}</p>
+                  <p class="pl-2 font-semibold text-gray-900">{{ index.flight_time }}</p>
                 </div>
               </div>
               <!-- Return Shuttle Bus Time -->
@@ -211,7 +211,6 @@
 <script setup lang="ts">
 import type { BookingModel } from '~/server/models/booking';
 import { useRoute } from 'vue-router'
-import dayjs from "dayjs";
 
 const { t } = useI18n();
 const route = useRoute();

@@ -92,7 +92,8 @@
     "total":"合计",
     "OrderAmount":"订单金额",
     "redEnvelope":"红包",
-    "OrderTotal":"订单总价"
+    "OrderTotal":"订单总价",
+    "Cash":"现金"
   },
   "confirmationPage":{
     "title": "订单确认",
