@@ -91,7 +91,7 @@
             <NuxtLink 
             :to="{
                 path: localPath('/payment'),
-                query: { bookingId: bookingId, LineID: form.LineID }
+                query: { bookingId: bookingId, LineID: form.LineID, totalprice:form.totalprice }
             }" 
             class="bg-green-500 text-white rounded-lg px-6 py-1 hover:bg-green-600 transition"
             >

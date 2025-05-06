@@ -67,7 +67,7 @@
             <div class="space-y-3">
                 <div class="flex justify-between text-gray-600">
                     <span>{{ $t('paymentPage.OrderAmount') }}</span>
-                    <span>NT$ {{ data?.totalprice }}</span>
+                    <span>NT$ {{ totalprice }}</span>
                 </div>
                 <div class="flex justify-between text-gray-600">
                     <span>服务税</span>
@@ -76,7 +76,7 @@
                 <div class="border-t border-gray-200 my-2"></div>
                 <div class="flex justify-between font-semibold text-gray-600">
                     <span>{{ $t('paymentPage.total') }}</span>
-                    <span class="text-green-600">NT$ {{ data?.totalprice }}</span>
+                    <span class="text-green-600">NT$ {{ totalprice }}</span>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
             class="w-full py-3 px-6 bg-gradient-to-r from-green-500 to-green-600 text-white font-medium rounded-lg text-center shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center"
         >
             <Icon name="mdi:tick" class="w-5 h-5 text-white mr-2"></Icon>
-            {{ $t('paymentPage.pay_button') }} (NT$ {{ data?.totalprice }})
+            {{ $t('paymentPage.pay_button') }} (NT$ {{ totalprice }})
         </button>
     </div>
 </div>
@@ -106,8 +106,10 @@ import { useRouter } from 'vue-router'
 const localPath = useLocalePath();
 // const bookingId = 107;
 // const LineID = 'U8dac240baa90713af3fc9941786bc6b6';
-const bookingId = route.query.bookingid;
+const bookingId = route.query.bookingId;
 const LineID = route.query.LineID;
+const totalprice = route.query.totalprice;
+
 const data = ref<BookingModel | null>(null);
 const selectedMethod = ref('')
 
@@ -116,18 +118,18 @@ const selectPayment = async (method: string) => {
   console.log('選擇的付款方式:', method)
 };
 
-const fetchData = async () => {
-  try {
-    const result = await $fetch(`/api/FindBookingDetailById/${bookingId}`);
-    data.value = result.data as BookingModel;
-    console.log('Booking:',data.value);
-    }catch (err) {
-    console.error('Error fetching booking:', err);
-    alert('Get blog detail error');
-  }
-};
+// const fetchData = async () => {
+//   try {
+//     const result = await $fetch(`/api/FindBookingDetailById/${bookingId}`);
+//     data.value = result.data as BookingModel;
+//     console.log('Booking:',data.value);
+//     }catch (err) {
+//     console.error('Error fetching booking:', err);
+//     alert('Get blog detail error');
+//   }
+// };
 
-onMounted(fetchData); 
+// onMounted(fetchData); 
 
 const pay = async () => {
   //const paymentStatus = selectedMethod.value === 'Cash' ? '現金' : '已付款';

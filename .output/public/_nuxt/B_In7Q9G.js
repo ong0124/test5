@@ -1,1 +1,0 @@
-import n from"./D3tGKj3w.js";import{d as c,H as a,b as r,c as s,e as _,f as m}from"./1vrHu2ec.js";const b=c({__name:"BackBtn",setup(p){const e=a();function o(){e.back()}return(l,u)=>{const t=n;return r(),s("div",null,[_("button",{onClick:o,class:"pl-2"},[m(t,{name:"i-tabler-arrow-back-up",class:"mr-1 bg-white ml-4 w-6 h-6"})])])}}});export{b as _};
