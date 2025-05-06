@@ -165,11 +165,11 @@ const formatDate = (date: dayjs.Dayjs | string | null) => {
 };
 
 
-const formRefund = reactive({
+const formRefund = computed(() => ({
   booking_id: id,
   LineID: form.LineID,
-  get reason() { return refundReason.value }
-})
+  reason: refundReason.value,
+}));
 
 const CreateRefund = async () => {
   if (!refundReason.value) {
@@ -180,7 +180,7 @@ const CreateRefund = async () => {
   try {
     const result  = await useFetch(`/api/PostRefund/${id}`, {
       method: 'POST',
-      body: formRefund
+      body: formRefund.value
     });
     if(result.data.value?.success){
       alert(t('alertMessage9'))

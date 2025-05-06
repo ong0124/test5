@@ -1623,17 +1623,17 @@ const _routes = [
   {
     name: "refund-id___en-US",
     path: "/en-US/refund/:id()",
-    component: () => import('./_id_-Cdmkg7uk.mjs')
+    component: () => import('./_id_-B8LYQ3Vn.mjs')
   },
   {
     name: "refund-id___zh-CN",
     path: "/zh-CN/refund/:id()",
-    component: () => import('./_id_-Cdmkg7uk.mjs')
+    component: () => import('./_id_-B8LYQ3Vn.mjs')
   },
   {
     name: "refund-id___zh-TW",
     path: "/refund/:id()",
-    component: () => import('./_id_-Cdmkg7uk.mjs')
+    component: () => import('./_id_-B8LYQ3Vn.mjs')
   },
   {
     name: "refunded___en-US",
