@@ -9,9 +9,9 @@ import 'consola/core';
 import 'node:path';
 
 const pool = createPool({
-  host: "35.76.152.103",
+  host: "18.180.90.233",
   user: "qs-tech-remote",
-  database: "line_booking_ticket",
+  database: "kinmentong",
   password: "Qs202588",
   port: 3306
 });
