@@ -1,6 +1,5 @@
 import liff from "@line/liff";
 import { LIFF_ID } from "@/utils/liff.config";
-import { useFetch } from "#app";
 
 export interface LiffUserProfile {
   user_id: string | null;
@@ -34,21 +33,24 @@ export async function loginWithLINE(): Promise<LiffUserProfile | null> {
       }
     });
 
-    if (createResponse.success) {
-      console.log('LINE 使用者資料已成功寫入資料庫');
-    } else {
+    if (!createResponse.success) {
       console.error('建立使用者時發生錯誤：', createResponse.message);
+      return null;
     }
+
+    saveUserToLocal(userProfile);
+    return userProfile;
+
   } catch (error) {
     console.error('建立使用者時發生錯誤:', error);
+    return null;
   }
-
-  saveUserToLocal(userProfile);
-  return userProfile;
 }
 
-export function logoutUser(): void {
+export async function logoutUser(): Promise<void> {
   if (typeof window === "undefined") return;
+
+  await liff.init({ liffId: LIFF_ID });
 
   liff.logout();
   localStorage.removeItem("user_id");

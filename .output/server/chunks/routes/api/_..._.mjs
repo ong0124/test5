@@ -8,6 +8,8 @@ import '@iconify/utils';
 import 'consola/core';
 import 'node:path';
 
+const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 1e3;
 const pool = createPool({
   host: "18.180.90.233",
   user: "qs-tech-remote",
@@ -16,12 +18,17 @@ const pool = createPool({
   port: 3306
 });
 const sql = async ({ query, values }) => {
-  try {
-    const [rows] = await pool.query(query, values);
-    return rows;
-  } catch (err) {
-    console.error("Database error:", err);
-    throw new Error("Database query failed");
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const [rows] = await pool.query(query, values);
+      return rows;
+    } catch (err) {
+      console.error(`Database error (attempt ${attempt}):`, err.message);
+      if (attempt === MAX_RETRIES) {
+        throw new Error("Database query failed after multiple attempts");
+      }
+      await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    }
   }
 };
 

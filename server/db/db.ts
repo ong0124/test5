@@ -1,5 +1,9 @@
 import { createPool } from 'mysql2/promise';
 
+
+const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 1000;
+
 interface Options {
   query: string;
   values?: any[];
@@ -14,11 +18,16 @@ const pool = createPool({
 });
 
 export const sql = async ({ query, values }: Options) => {
-  try {
-    const [rows] = await pool.query(query, values);
-    return rows;
-  } catch (err) {
-    console.error('Database error:', err); // 打印数据库连接错误
-    throw new Error('Database query failed');
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const [rows] = await pool.query(query, values);
+      return rows;
+    } catch (err: any) {
+      console.error(`Database error (attempt ${attempt}):`, err.message);
+      if (attempt === MAX_RETRIES) {
+        throw new Error('Database query failed after multiple attempts');
+      }
+      await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    }
   }
 };

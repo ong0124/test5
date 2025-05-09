@@ -29,30 +29,21 @@
 </template>
 
 
-<script lang="ts">
-import { ref } from 'vue';
-import { defineComponent } from 'vue';
-import { useI18n } from 'vue-i18n';
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+// 多语言函数
+const { t } = useI18n()
 
-export default defineComponent({
-   
-  setup() {
-    const isChecked = ref(false); // 定義復選框狀態
-    const activeTab = ref(1);
-    const showContent = (tab: number) => {
-      activeTab.value = tab;
-    };
+// 复选框状态
+const isChecked = ref(false)
 
-    // 打开通知
-    const { t } = useI18n();
-   
-    return {
-      t,
-      activeTab,
-      isChecked,
-      showContent,
-      };
-  },
-});
+// 当前选中的 tab
+const activeTab = ref(1)
+
+// 切换 tab 时触发
+const showContent = (tab: number) => {
+  activeTab.value = tab
+}
 </script>

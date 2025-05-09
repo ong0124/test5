@@ -114,9 +114,8 @@ const logout = () => {
 };
 
 onMounted(async () => {
-  const user = loadUser(); // 直接调用 utils 中的函数加载用户信息
+  const user = loadUser(); 
   if (user) {
-    // 如果用户已登录，设置头像和用户名
     LineID.value = user.user_id || '';
     user_picture.value = user.user_picture || defaultAvatar;
     user_name.value = user.user_name || t('profile.nickname');
