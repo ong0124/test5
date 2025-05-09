@@ -23,7 +23,7 @@ export async function loginWithLINE(): Promise<LiffUserProfile | null> {
     user_name: profile.displayName,
     user_picture: profile.pictureUrl ?? null,
   };
-  
+
   try {
     const createResponse = await $fetch('/api/LoginCustomer/createUser', {
       method: 'POST',
