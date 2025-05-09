@@ -1,1 +1,0 @@
-import{d as a,b as o,c}from"./BtgtZnnF.js";const i=a({__name:"test",setup(s){const t=async()=>{const e=await(await fetch("/api/createPayment",{method:"POST",body:JSON.stringify({amount:100,currency:"TWD"})})).json();e.paymentUrl&&(window.location.href=e.paymentUrl)};return(n,e)=>(o(),c("button",{onClick:t},"支付"))}});export{i as default};

@@ -392,7 +392,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
       if (!isChecked.value) {
         openNotification('bottom'); // 如果未勾選，彈出通知
       } else {
-        let user = loadUser(); 
+        let user = await loginWithLINE(); 
 
         if (!user || !user.user_id) {
           alert(t('alertMessage13'))
