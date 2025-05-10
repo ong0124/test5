@@ -1,0 +1,1 @@
+import{H as o}from"./CdXQWHPu.js";const a=r=>r?o(r).format("YYYY-MM-DD"):"N/A";export{a as f};

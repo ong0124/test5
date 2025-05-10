@@ -113,7 +113,7 @@ const logout = () => {
 };
 
 onMounted(async () => {
-  const user = await loginWithLINE();
+  const user = await checkLoginStatus();
   if (user) {
     LineID.value = user.user_id || '';
     user_picture.value = user.user_picture || defaultAvatar;
