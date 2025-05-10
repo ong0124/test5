@@ -25,7 +25,7 @@
       </div>
       <div class="text-gray-500 ">
         <div class="flex">
-              <div class="flex-1 self-center"><p class="text-end">{{ departure_loc }}</p></div>
+              <div class="flex-1 self-center"><p class="text-end">{{ Translate_loc(form.departure_loc) }}</p></div>
               <div class="flex-1 flex-col text-center">
                 <div class="border-b-2 border-dashed mx-4 border-lwm-400 text-sm">
                   <p>{{ formatDate(form.shuttle_date) }}</p>
@@ -34,7 +34,7 @@
                   <p>{{ form.shuttle_time }}</p>
                 </div>
               </div>
-              <div class="flex-1 self-center"><p>{{ destination_loc }}</p></div>
+              <div class="flex-1 self-center"><p>{{ Translate_loc(form.destination_loc) }}</p></div>
         </div>
           <div class="grid grid-cols-2 pt-4">
             <div class="flex-col text-start ml-14 ">
@@ -66,7 +66,7 @@
         </div>
         <div class="text-gray-500">
           <div class="flex">
-                <div class="flex-1 self-center"><p class="text-end">{{ return_departure }}</p></div>
+                <div class="flex-1 self-center"><p class="text-end">{{ Translate_loc(form.return_departure) }}</p></div>
                 <div class="flex-1 flex-col text-center">
                   <div class="border-b-2 border-dashed mx-4 border-lwm-400 text-sm">
                     <p>{{ formatDate(form.return_shuttle_date) }}</p>
@@ -75,7 +75,7 @@
                     <p>{{ form.return_shuttle_time }}</p>
                   </div>
                 </div>
-                <div class="flex-1 self-center"><p>{{ return_destination }}</p></div>
+                <div class="flex-1 self-center"><p>{{ Translate_loc(form.return_destination) }}</p></div>
           </div>
             <div class="grid grid-cols-2 pt-4 ">
               <div class="flex-col text-start ml-14 ">
@@ -113,13 +113,13 @@
       <!-- 出发地与目的地 -->
       <div class="flex items-center justify-between bg-gray-100 p-3 rounded-lg px-8">
         <p class="font-medium text-gray-700">
-          <span v-if="isSwapped" class=" text-blue-500">{{ destination_loc }}</span>
-          <span v-else>{{ departure_loc }}</span>
+          <span v-if="isSwapped" class=" text-blue-500">{{ Translate_loc(form.destination_loc) }}</span>
+          <span v-else>{{ Translate_loc(form.departure_loc) }}</span>
         </p>
         <Icon name="fa6-solid:rotate" class="mx-4 bg-lwm-400 text-white p-2 rounded-full w-6 h-6 cursor-pointer transition-transform duration-500" :class="{'rotate-180': isSwapped}" @click="swapText" />
         <p class="font-medium text-gray-700">
-          <span v-if="isSwapped" class=" text-blue-500">{{ departure_loc }}</span>
-          <span v-else>{{ destination_loc }}</span>
+          <span v-if="isSwapped" class=" text-blue-500">{{ Translate_loc(form.departure_loc) }}</span>
+          <span v-else>{{ Translate_loc(form.destination_loc) }}</span>
         </p>
       </div>
 
@@ -130,8 +130,8 @@
         <div class="flex items-center justify-between bg-gray-100 p-3 rounded-lg px-8">
           <p class="font-medium text-gray-700">
             
-            <span v-if="isSwapped" class=" text-blue-500">{{ return_destination }}</span>
-            <span v-else>{{ return_departure }}</span>
+            <span v-if="isSwapped" class=" text-blue-500">{{ Translate_loc(form.return_destination) }}</span>
+            <span v-else>{{ Translate_loc(form.return_departure) }}</span>
           </p>
 
           <Icon name="fa6-solid:rotate" 
@@ -140,8 +140,8 @@
           @click="swapText" />
 
           <p class="font-medium text-gray-700">
-            <span v-if="isSwapped" class=" text-blue-500">{{ return_departure }}</span>
-            <span v-else>{{ return_destination }}</span>
+            <span v-if="isSwapped" class=" text-blue-500">{{ Translate_loc(form.return_departure) }}</span>
+            <span v-else>{{ Translate_loc(form.return_destination) }}</span>
           </p>
         </div>
       </template>
@@ -433,10 +433,6 @@ const form = reactive({
   return_shuttle_date: dayjs() , 
   return_shuttle_time: '', 
 });  
-const departure_loc = computed(() => t(form.departure_loc as string|| 'defaultKey'));
-const destination_loc = computed(() => t(form.destination_loc as string|| 'defaultKey'));
-const return_departure = computed(() => t(form.return_departure as string|| 'defaultKey'));
-const return_destination = computed(() => t(form.return_destination as string|| 'defaultKey'));
 
 const fetchData = async () => {
   try {

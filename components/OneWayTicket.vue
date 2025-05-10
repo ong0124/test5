@@ -27,21 +27,45 @@
               <div class="border-b-2 py-3"></div>
               <div class="flex flex-col pt-3 pl-4">
                 <template v-if="isSwapped">
-                  <div class="flex items-center pb-1">
-                    <div class="flex pr-4">
-                      <Icon name="lucide:tickets" class="bg-lwm-50 w-6 h-6" />
-                      <p class="text-lwm-500">
-                        {{ $t('Booking.flightNumber') }}
-                      </p>
-                    </div>
-                      <div class="border rounded-lg">
-                          <input
-                            type="text"
-                            :placeholder="$t('Booking.required')"
-                            v-model="flightNumber"
-                            class="flex-1 px-2 py-1 w-full bg-white rounded-lg focus:outline-none text-sm"
-                          />
+                  <div class="flex pb-1">
+                    <div class="flex flex-col">
+                      <div class="flex">
+                        <Icon name="lucide:tickets" class="bg-lwm-50 w-6 h-6" />
+                        <p class="text-lwm-500">
+                          {{ $t('Booking.flightNumber') }}
+                        </p>
+                      </div>
+                        <div class="border rounded-lg mr-2">
+                            <input
+                              type="text"
+                              :placeholder="$t('Booking.required')"
+                              v-model="flightNumber"
+                              class="px-2 py-1 w-full bg-white rounded-lg focus:outline-none text-sm"
+                            />
                         </div>
+                    </div>
+                    <div class="flex flex-col">
+                      <div class="flex pr-4">
+                        <Icon name="uil-plane-departure" class="bg-lwm-50 w-6 h-6" />
+                        <p class="text-lwm-500">
+                          {{ $t('Booking.flightDeparture') }}
+                        </p>
+                      </div>
+                        <div class="border rounded-lg">
+                             <select
+                                v-model="flightDeparture"
+                                class="flex-1 px-2 py-1 w-full bg-white rounded-lg focus:outline-none text-sm"
+                              >
+                                <option disabled value="">{{ $t('Booking.required') }}</option>
+                                  <option value="TSA">松山 (TSA)</option>
+                                  <option value="RMQ">台中 (RMQ)</option>
+                                  <option value="CYI">嘉義 (CYI)</option>
+                                  <option value="TNN">台南 (TNN)</option>
+                                  <option value="KHH">高雄 (KHH)</option>
+                                  <option value="MZG">澎湖 (MZG)</option>
+                              </select>
+                        </div>
+                    </div>
                   </div>
                 </template>
                 <div class="flex">
@@ -248,6 +272,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
     return (Math.min(adultCount, 2) * 150) + Math.max(adultCount - 2, 0) * 100;
     });
     const isSwapped = ref(false);
+    const flightDeparture = ref('');
     
     const antLocales = {
       'zh-CN': zhCN,
@@ -369,8 +394,6 @@ import type { offDays_dates } from '~~/server/models/offDays';
         const start = dayjs(day.startOffDays);
         const end = day.endOffDays ? dayjs(day.endOffDays) : start;
 
-        console.log('OffDay Range:', start.format('YYYY-MM-DD'), 'to', end.format('YYYY-MM-DD'));
-
         return current.isSameOrAfter(start, 'day') && current.isSameOrBefore(end, 'day');
       });
 
@@ -465,7 +488,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
       }));
       isDataLoaded.value = true;
     } catch {
-      alert('Fetch error');
+      alert(t('alertMessage15'));
     }
   };
 

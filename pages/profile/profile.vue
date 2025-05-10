@@ -75,7 +75,6 @@ import ContactIcon from '@/assets/icons/Contact2.png';
 import ReviewIcon from '@/assets/icons/Review2.png';
 import passengerIcon from '@/assets/icons/passengericon.png';
 import { logoutUser } from "@/utils/Useliff"; 
-import { loadUser } from "@/utils/Useliff"; 
 const defaultAvatar = 'https://example.com/default-avatar.jpg'; 
 const user_picture = ref<string | null>(null); 
 const user_name = ref<string | null>(null);

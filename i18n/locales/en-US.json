@@ -33,11 +33,11 @@
 
 "Booking": {
     "airport": "Shang yi Airport",
-    "arrivalAtAirportTime": "Arrival at Airport Time",
+    "arrivalAtAirportTime": "Arrival at Shang yi Airport Time",
     "pier": "Shuitou Pier",
     "departure": "Departure Location",
     "arrival": "Arrival Location",
-    "arrivalPortTime": "Arrival Port Time",
+    "arrivalPortTime": "Arrival Shuitou Pier Time",
     "shuttleBusTime": "Shuttle Bus Departure Time",
     "ticketPrice": "Ticket Price",
     "adultTicket": "Adult Ticket",
@@ -50,6 +50,7 @@
     "outward": "Outward",
     "flightNumber": "Flight Number",
     "flightTime": "Flight Time",
+    "flightDeparture": "Flight Departure Location",
     "ferryTime": "Ferry Time",
     "return": "Return"
   },
@@ -259,6 +260,7 @@
   "alertMessage12": "Failed to log in with LINE",
   "alertMessage13": "Please log in with LINE first",
   "alertMessage14": "Successfully logged out",
+  "alertMessage15": "Poor network connection. Please re-enter the website.",
   "announcementMessage":"Notice",
   "noMoreData":"No more left"
 }

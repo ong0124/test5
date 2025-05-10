@@ -1458,17 +1458,17 @@ const _routes = [
   {
     name: "allBookingStatus___en-US",
     path: "/en-US/allBookingStatus",
-    component: () => import('./allBookingStatus-jDOaqEvi.mjs')
+    component: () => import('./allBookingStatus-DPTK05XI.mjs')
   },
   {
     name: "allBookingStatus___zh-CN",
     path: "/zh-CN/allBookingStatus",
-    component: () => import('./allBookingStatus-jDOaqEvi.mjs')
+    component: () => import('./allBookingStatus-DPTK05XI.mjs')
   },
   {
     name: "allBookingStatus___zh-TW",
     path: "/allBookingStatus",
-    component: () => import('./allBookingStatus-jDOaqEvi.mjs')
+    component: () => import('./allBookingStatus-DPTK05XI.mjs')
   },
   {
     name: "boardingpoint___en-US",
@@ -1488,17 +1488,17 @@ const _routes = [
   {
     name: "confirmationPage-id___en-US",
     path: "/en-US/confirmationPage/:id()",
-    component: () => import('./_id_-w0UlOMeV.mjs')
+    component: () => import('./_id_-Br775xSn.mjs')
   },
   {
     name: "confirmationPage-id___zh-CN",
     path: "/zh-CN/confirmationPage/:id()",
-    component: () => import('./_id_-w0UlOMeV.mjs')
+    component: () => import('./_id_-Br775xSn.mjs')
   },
   {
     name: "confirmationPage-id___zh-TW",
     path: "/confirmationPage/:id()",
-    component: () => import('./_id_-w0UlOMeV.mjs')
+    component: () => import('./_id_-Br775xSn.mjs')
   },
   {
     name: "editProfile___en-US",
@@ -1518,17 +1518,17 @@ const _routes = [
   {
     name: "index___en-US",
     path: "/en-US",
-    component: () => import('./index-CC_l7zej.mjs')
+    component: () => import('./index-DvWvY1N3.mjs')
   },
   {
     name: "index___zh-CN",
     path: "/zh-CN",
-    component: () => import('./index-CC_l7zej.mjs')
+    component: () => import('./index-DvWvY1N3.mjs')
   },
   {
     name: "index___zh-TW",
     path: "/",
-    component: () => import('./index-CC_l7zej.mjs')
+    component: () => import('./index-DvWvY1N3.mjs')
   },
   {
     name: "myTrip-id___en-US",
@@ -1548,17 +1548,17 @@ const _routes = [
   {
     name: "myTrip-orderDetail___en-US",
     path: "/en-US/myTrip/orderDetail",
-    component: () => import('./orderDetail-CGdMCSS7.mjs')
+    component: () => import('./orderDetail-C9AvT7Us.mjs')
   },
   {
     name: "myTrip-orderDetail___zh-CN",
     path: "/zh-CN/myTrip/orderDetail",
-    component: () => import('./orderDetail-CGdMCSS7.mjs')
+    component: () => import('./orderDetail-C9AvT7Us.mjs')
   },
   {
     name: "myTrip-orderDetail___zh-TW",
     path: "/myTrip/orderDetail",
-    component: () => import('./orderDetail-CGdMCSS7.mjs')
+    component: () => import('./orderDetail-C9AvT7Us.mjs')
   },
   {
     name: "notTraveled___en-US",
@@ -1638,17 +1638,17 @@ const _routes = [
   {
     name: "refunded___en-US",
     path: "/en-US/refunded",
-    component: () => import('./refunded-Dz2hMEzP.mjs')
+    component: () => import('./refunded-B-BPyDq_.mjs')
   },
   {
     name: "refunded___zh-CN",
     path: "/zh-CN/refunded",
-    component: () => import('./refunded-Dz2hMEzP.mjs')
+    component: () => import('./refunded-B-BPyDq_.mjs')
   },
   {
     name: "refunded___zh-TW",
     path: "/refunded",
-    component: () => import('./refunded-Dz2hMEzP.mjs')
+    component: () => import('./refunded-B-BPyDq_.mjs')
   },
   {
     name: "reschedulePage-id___en-US",
@@ -1668,17 +1668,17 @@ const _routes = [
   {
     name: "reschedulePage-details-id___en-US",
     path: "/en-US/reschedulePage/details/:id()",
-    component: () => import('./_id_-XQdejobs.mjs')
+    component: () => import('./_id_-DqzEAOcX.mjs')
   },
   {
     name: "reschedulePage-details-id___zh-CN",
     path: "/zh-CN/reschedulePage/details/:id()",
-    component: () => import('./_id_-XQdejobs.mjs')
+    component: () => import('./_id_-DqzEAOcX.mjs')
   },
   {
     name: "reschedulePage-details-id___zh-TW",
     path: "/reschedulePage/details/:id()",
-    component: () => import('./_id_-XQdejobs.mjs')
+    component: () => import('./_id_-DqzEAOcX.mjs')
   },
   {
     name: "test___en-US",
@@ -2776,15 +2776,15 @@ const localeCodes = [
 ];
 const localeLoaders = {
   "en-US": [{ key: "../i18n/locales/en-US.json", load: () => import(
-    './en-US-CdMV3-6d.mjs'
+    './en-US-DOvLH471.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_en_US_json" */
   ), cache: true }],
   "zh-CN": [{ key: "../i18n/locales/zh-CN.json", load: () => import(
-    './zh-CN-D3JhzsZK.mjs'
+    './zh-CN-_5O9SWP-.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_CN_json" */
   ), cache: true }],
   "zh-TW": [{ key: "../i18n/locales/zh-TW.json", load: () => import(
-    './zh-TW-DT6r3xzj.mjs'
+    './zh-TW-LjCFjh9C.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_TW_json" */
   ), cache: true }]
 };

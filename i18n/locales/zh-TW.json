@@ -34,11 +34,11 @@
 
   "Booking": {
     "airport": "尚義機場",
-    "arrivalAtAirportTime": "抵達機場時間",
+    "arrivalAtAirportTime": "抵達尚義機場時間",
     "pier": "水頭碼頭",
     "departure": "出發地點",
     "arrival": "抵達地點",
-    "arrivalPortTime": "抵達碼頭時間",
+    "arrivalPortTime": "抵達水頭碼頭時間",
     "shuttleBusTime": "接駁車發車時間",
     "ticketPrice": "票價",
     "adultTicket": "成人票",
@@ -49,9 +49,10 @@
     "required": "必填",
     "pricePerPerson": " /人",
     "outward": "去程",
-    "flightNumber": "班次編號",
-    "ferryTime": "船班時間",
+    "flightNumber": "航班編號",
+    "ferryTime": "銜接的船班時間",
     "flightTime": "班機時間",
+    "flightDeparture": "班機出發地",
     "return": "返程"
   },
 
@@ -260,6 +261,7 @@
     "alertMessage12": "登錄 LINE 失敗",
     "alertMessage13": "請先登錄 LINE",
     "alertMessage14": "成功登出",
+    "alertMessage15": "網路不佳，請重新進入網站。",
     "announcementMessage":"注意",
     "noMoreData":"沒有更多了"
 }

@@ -198,8 +198,8 @@ import type { BookingModel } from '~/server/models/booking';
 const route = useRoute();
 const router = useRouter();
 
-//const LineID = route.params.id;
-const LineID = '7asfda';
+const LineID = route.params.id;
+//const LineID = '7asfda';
 
 const data = ref<BookingModel[]>([]);
 const fetchData = async () => {

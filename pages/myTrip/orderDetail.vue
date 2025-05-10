@@ -15,7 +15,7 @@
 
     <div class="flex items-center justify-between">
       <div class="flex-1 text-gray-600 text-lg text-end pr-6">
-        <p>{{ departure_loc }}</p>
+        <p>{{ Translate_loc(form.departure_loc) }}</p>
       </div>
 
       <div class="flex-2 text-center text-gray-600">
@@ -28,7 +28,7 @@
       </div>
 
       <div class="flex-1 text-gray-600 text-lg text-start pl-6">
-        <p>{{ destination_loc }}</p>
+        <p>{{ Translate_loc(form.destination_loc) }}</p>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
   class="bg-amber-50 py-4 px-2 relative overflow-hidden border-b border-gray-500 ">
     <div class="flex items-center justify-between">
       <div class="flex-1 text-gray-600 text-lg text-end pr-6">
-        <p>{{ return_departure }}</p>
+        <p>{{ Translate_loc(form.return_departure) }}</p>
       </div>
 
       <div class="flex-2 text-center text-gray-600">
@@ -49,7 +49,7 @@
       </div>
 
       <div class="flex-1 text-gray-600 text-lg text-start pl-6">
-        <p>{{ return_destination }}</p>
+        <p>{{ Translate_loc(form.return_destination) }}</p>
       </div>
     </div>
   </div>
@@ -157,10 +157,6 @@ const { t } = useI18n();
         return_shuttle_date: '' , 
         return_shuttle_time: '', 
     });  
-    const departure_loc = computed(() => t(form.departure_loc as string|| 'defaultKey'));
-    const destination_loc = computed(() => t(form.destination_loc as string|| 'defaultKey'));
-    const return_departure = computed(() => t(form.return_departure as string|| 'defaultKey'));
-    const return_destination = computed(() => t(form.return_destination as string|| 'defaultKey'));
  
 const bookingId = route.query.bookingId;
 console.log("Received bookingId:", bookingId);

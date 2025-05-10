@@ -33,11 +33,11 @@
 
   "Booking": {
     "airport": "尚义机场",
-    "arrivalAtAirportTime": "抵达机场时间",
+    "arrivalAtAirportTime": "抵达尚义机场时间",
     "pier": "水头码头",
     "departure": "出发地点",
     "arrival": "抵达地点",
-    "arrivalPortTime": "抵达码头时间",
+    "arrivalPortTime": "抵达水头码头时间",
     "shuttleBusTime": "接驳车发车时间",
     "ticketPrice": "票价",
     "adultTicket": "成人票",
@@ -50,6 +50,7 @@
     "outward": "去程",
     "flightNumber": "班次编号",
     "flightTime": "班机时间",
+    "flightDeparture": "班机出发地",
     "ferryTime": "船班时间",
     "return": "返程"
   },
@@ -259,6 +260,7 @@
   "alertMessage12": "登录 LINE 失败",
   "alertMessage13": "请先登录 LINE",
   "alertMessage14": "成功登出",
+  "alertMessage15": "网络不佳，请重新进入网站。",
   "announcementMessage":"注意",
   "noMoreData":"没有更多了"
 }

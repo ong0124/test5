@@ -17,9 +17,9 @@
                 <p class="my-2">{{ formatDate(form.shuttle_date) }} {{ form.shuttle_time}}</p>
                 <div class="flex justify-between">
                     <div class="flex ">
-                        <p>{{ departure_loc }}</p>
+                        <p>{{ Translate_loc(form.departure_loc) }}</p>
                         <Icon name="material-symbols-arrow-right-alt" class="mx-2 w-6 h-6"></Icon>
-                        <p>{{ destination_loc }}</p>
+                        <p>{{ Translate_loc(form.destination_loc) }}</p>
                     </div>
                     <div>
                         <p>{{ isSwapped ? $t('Booking.ferryTime') : $t('Booking.flightTime') }} : {{ isSwapped ?  form.ferry_time : form.flight_time }}</p>
@@ -35,9 +35,9 @@
                 <p class="my-2">{{ formatDate(form.return_shuttle_date) }} {{ form.return_shuttle_time }}</p>
                 <div class="flex justify-between">
                     <div class="flex ">
-                        <p>{{ return_departure }}</p>
+                        <p>{{ Translate_loc(form.return_departure) }}</p>
                         <Icon name="material-symbols-arrow-right-alt" class="mx-2 w-6 h-6"></Icon>
-                        <p>{{ return_destination }}</p>
+                        <p>{{ Translate_loc(form.return_destination) }}</p>
                     </div>
                     <div>
                         <p>{{ isSwapped ? $t('Booking.flightTime') : $t('Booking.ferryTime') }} : {{ isSwapped ?  form.flight_time : form.ferry_time}}</p>
@@ -170,10 +170,6 @@ import type { BookingModel } from '~/server/models/booking';
         return_shuttle_date: '' , 
         return_shuttle_time: '', 
     });  
-    const departure_loc = computed(() => t(form.departure_loc as string|| 'defaultKey'));
-    const destination_loc = computed(() => t(form.destination_loc as string|| 'defaultKey'));
-    const return_departure = computed(() => t(form.return_departure as string|| 'defaultKey'));
-    const return_destination = computed(() => t(form.return_destination as string|| 'defaultKey'));
  
 const fetchData = async () => {
   try {
