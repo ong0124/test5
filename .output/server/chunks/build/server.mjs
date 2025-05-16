@@ -1518,17 +1518,17 @@ const _routes = [
   {
     name: "index___en-US",
     path: "/en-US",
-    component: () => import('./index-DvWvY1N3.mjs')
+    component: () => import('./index-Ck5KFizn.mjs')
   },
   {
     name: "index___zh-CN",
     path: "/zh-CN",
-    component: () => import('./index-DvWvY1N3.mjs')
+    component: () => import('./index-Ck5KFizn.mjs')
   },
   {
     name: "index___zh-TW",
     path: "/",
-    component: () => import('./index-DvWvY1N3.mjs')
+    component: () => import('./index-Ck5KFizn.mjs')
   },
   {
     name: "myTrip-id___en-US",

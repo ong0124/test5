@@ -61,7 +61,6 @@
                                   <option value="RMQ">台中 (RMQ)</option>
                                   <option value="CYI">嘉義 (CYI)</option>
                                   <option value="TNN">台南 (TNN)</option>
-                                  <option value="KHH">高雄 (KHH)</option>
                                   <option value="MZG">澎湖 (MZG)</option>
                               </select>
                         </div>
