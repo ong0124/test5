@@ -21,8 +21,9 @@
                         <Icon name="material-symbols-arrow-right-alt" class="mx-2 w-6 h-6"></Icon>
                         <p>{{ Translate_loc(form.destination_loc) }}</p>
                     </div>
-                    <div>
-                        <p>{{ isSwapped ? $t('Booking.ferryTime') : $t('Booking.flightTime') }} : {{ isSwapped ?  form.ferry_time : form.flight_time }}</p>
+                    <div class="flex-col text-center">
+                        <p>{{ isSwapped ? $t('Booking.ferryTime') : $t('Booking.flightTime') }} </p>
+                        <p> {{ isSwapped ?  form.ferry_time : form.flight_time }}</p>
                     </div>
                 </div>
             </div>
@@ -39,8 +40,9 @@
                         <Icon name="material-symbols-arrow-right-alt" class="mx-2 w-6 h-6"></Icon>
                         <p>{{ Translate_loc(form.return_destination) }}</p>
                     </div>
-                    <div>
-                        <p>{{ isSwapped ? $t('Booking.flightTime') : $t('Booking.ferryTime') }} : {{ isSwapped ?  form.flight_time : form.ferry_time}}</p>
+                    <div class="flex-col text-center" >
+                        <p>{{ isSwapped ? $t('Booking.flightTime') : $t('Booking.ferryTime') }} </p>
+                        <p> {{ isSwapped ?  form.flight_time : form.ferry_time}}</p>
                     </div>
                 </div>
             </div>

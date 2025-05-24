@@ -1488,17 +1488,17 @@ const _routes = [
   {
     name: "confirmationPage-id___en-US",
     path: "/en-US/confirmationPage/:id()",
-    component: () => import('./_id_-Br775xSn.mjs')
+    component: () => import('./_id_-CQ2rWXfO.mjs')
   },
   {
     name: "confirmationPage-id___zh-CN",
     path: "/zh-CN/confirmationPage/:id()",
-    component: () => import('./_id_-Br775xSn.mjs')
+    component: () => import('./_id_-CQ2rWXfO.mjs')
   },
   {
     name: "confirmationPage-id___zh-TW",
     path: "/confirmationPage/:id()",
-    component: () => import('./_id_-Br775xSn.mjs')
+    component: () => import('./_id_-CQ2rWXfO.mjs')
   },
   {
     name: "editProfile___en-US",
@@ -1518,17 +1518,17 @@ const _routes = [
   {
     name: "index___en-US",
     path: "/en-US",
-    component: () => import('./index-Ck5KFizn.mjs')
+    component: () => import('./index-FW2LaKoh.mjs')
   },
   {
     name: "index___zh-CN",
     path: "/zh-CN",
-    component: () => import('./index-Ck5KFizn.mjs')
+    component: () => import('./index-FW2LaKoh.mjs')
   },
   {
     name: "index___zh-TW",
     path: "/",
-    component: () => import('./index-Ck5KFizn.mjs')
+    component: () => import('./index-FW2LaKoh.mjs')
   },
   {
     name: "myTrip-id___en-US",

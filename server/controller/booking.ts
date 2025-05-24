@@ -43,7 +43,8 @@ export const create = async (evt: H3Event)=>{
             shuttle_date: body.shuttle_date, 
             shuttle_time: body.shuttle_time, 
             return_shuttle_date: body.return_shuttle_date, 
-            return_shuttle_time: body.return_shuttle_time
+            return_shuttle_time: body.return_shuttle_time,
+            flight_loc:body.flight_loc,
         });
         if (!result || !result.id) {
             throw createError({ statusCode: 500, statusMessage: 'Failed to create booking, no ID returned' });

@@ -50,7 +50,7 @@
                       </div>
                         <div class="border rounded-lg">
                              <select
-                                v-model="flightDeparture"
+                                v-model="flight_loc"
                                 class="flex-1 px-2 py-1 w-full bg-white rounded-lg focus:outline-none text-sm"
                               >
                                 <option disabled value="">{{ $t('Booking.required') }}</option>
@@ -215,7 +215,7 @@
                       </div>
                         <div class="border rounded-lg">
                              <select
-                                v-model="flightDeparture2"
+                                v-model="flight_loc"
                                 class="flex-1 px-2 py-1 w-full bg-white rounded-lg focus:outline-none text-sm"
                               >
                                 <option disabled value="">{{ $t('Booking.required') }}</option>
@@ -435,8 +435,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
       adult: 1,
       child: 1,
     });
-    const flightDeparture = ref('');
-    const flightDeparture2 = ref('');
+    const flight_loc = ref('');
     const contact = ref("");
     const phone = ref("");
     const totalPrice = computed(() => {
@@ -665,6 +664,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
           shuttle_time: TimeShuttle.value,
           return_shuttle_date: DateShuttleReturn.value?DateShuttleReturn.value.format("YYYY-MM-DD") : undefined, 
           return_shuttle_time: TimeShuttleReturn.value, 
+          flight_loc:flight_loc.value || undefined,
         }; 
         try{
           const response = await $fetch('/api/POSTbooking', {

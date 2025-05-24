@@ -29,6 +29,7 @@ export type BookingModel = {
     refund_id ?:number;
     refund_status?:string;
     refund_amount?:number;
+    flight_loc?:string;
 }
 
 
@@ -65,8 +66,9 @@ export const create = async(data: Pick<BookingModel, Exclude<keyof BookingModel,
       shuttle_date,
       shuttle_time,
       return_shuttle_date,
-      return_shuttle_time
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      return_shuttle_time,
+      flight_loc
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `,
   values: [ data.trip_type,
     data.LineID,
@@ -89,7 +91,8 @@ export const create = async(data: Pick<BookingModel, Exclude<keyof BookingModel,
     data.shuttle_date,
     data.shuttle_time,
     data.return_shuttle_date,
-    data.return_shuttle_time]
+    data.return_shuttle_time,
+    data.flight_loc]
     })
     ) as any;
     console.log('Inserted result:', result);

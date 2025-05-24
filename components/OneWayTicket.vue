@@ -53,7 +53,7 @@
                       </div>
                         <div class="border rounded-lg">
                              <select
-                                v-model="flightDeparture"
+                                v-model="flight_loc"
                                 class="flex-1 px-2 py-1 w-full bg-white rounded-lg focus:outline-none text-sm"
                               >
                                 <option disabled value="">{{ $t('Booking.required') }}</option>
@@ -271,7 +271,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
     return (Math.min(adultCount, 2) * 150) + Math.max(adultCount - 2, 0) * 100;
     });
     const isSwapped = ref(false);
-    const flightDeparture = ref('');
+    const flight_loc = ref('');
     
     const antLocales = {
       'zh-CN': zhCN,
@@ -447,6 +447,7 @@ import type { offDays_dates } from '~~/server/models/offDays';
           shuttle_time: TimeShuttle.value,
           return_shuttle_date: undefined , 
           return_shuttle_time: undefined, 
+          flight_loc:flight_loc.value || undefined,
         }; 
         try{
           const response = await $fetch('/api/POSTbooking', {
