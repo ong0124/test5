@@ -89,7 +89,6 @@
             <p class="mr-2">{{ $t('confirmationPage.total') }}</p>
             <p class="text-red-500 text-lg">NT$ &nbsp;{{ form.totalprice }}</p>
             </div>
-            <!-- Right Side: Submit Order Button -->
             <NuxtLink 
             :to="{
                 path: localPath('/payment'),

@@ -2776,15 +2776,15 @@ const localeCodes = [
 ];
 const localeLoaders = {
   "en-US": [{ key: "../i18n/locales/en-US.json", load: () => import(
-    './en-US-DOvLH471.mjs'
+    './en-US-B1psoN0-.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_en_US_json" */
   ), cache: true }],
   "zh-CN": [{ key: "../i18n/locales/zh-CN.json", load: () => import(
-    './zh-CN-_5O9SWP-.mjs'
+    './zh-CN-C0YFMLV-.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_CN_json" */
   ), cache: true }],
   "zh-TW": [{ key: "../i18n/locales/zh-TW.json", load: () => import(
-    './zh-TW-LjCFjh9C.mjs'
+    './zh-TW-KaSEPJVr.mjs'
     /* webpackChunkName: "locale_E_58_E_58_line_miniApp_demo_LWM_LineTravelDB_i18n_locales_zh_TW_json" */
   ), cache: true }]
 };

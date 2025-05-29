@@ -261,6 +261,7 @@
   "alertMessage13": "Please log in with LINE first",
   "alertMessage14": "Successfully logged out",
   "alertMessage15": "Poor network connection. Please re-enter the website.",
+  "alertMessage16": "Please select a payment method",
   "announcementMessage":"Notice",
   "noMoreData":"No more left"
 }

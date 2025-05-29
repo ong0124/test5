@@ -260,7 +260,8 @@
   "alertMessage12": "登录 LINE 失败",
   "alertMessage13": "请先登录 LINE",
   "alertMessage14": "成功登出",
-  "alertMessage15": "网络不佳，请重新进入网站。",
+  "alertMessage15": "网络不佳，请重新进入网站",
+  "alertMessage16": "请选择付款方式",
   "announcementMessage":"注意",
   "noMoreData":"没有更多了"
 }

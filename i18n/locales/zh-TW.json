@@ -261,7 +261,8 @@
     "alertMessage12": "登錄 LINE 失敗",
     "alertMessage13": "請先登錄 LINE",
     "alertMessage14": "成功登出",
-    "alertMessage15": "網路不佳，請重新進入網站。",
+    "alertMessage15": "網路不佳，請重新進入網站",
+    "alertMessage16": "請選擇付款方式",
     "announcementMessage":"注意",
     "noMoreData":"沒有更多了"
 }

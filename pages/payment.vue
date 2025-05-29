@@ -132,7 +132,11 @@ const selectPayment = async (method: string) => {
 // onMounted(fetchData); 
 
 const pay = async () => {
-  //const paymentStatus = selectedMethod.value === 'Cash' ? '現金' : '已付款';
+    
+    if (!selectedMethod.value) {
+    alert('請選擇付款方式');
+    return;
+  }
   try {
     const res = await $fetch('/api/POSTpayment', {
       method: 'POST',
